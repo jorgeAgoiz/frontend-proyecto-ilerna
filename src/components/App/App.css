@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&family=Roboto+Mono&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -8,8 +11,8 @@
 body {
   background-image: linear-gradient(
       to top,
-      rgb(251, 251, 251, 0.8),
-      rgba(0, 0, 0, 1)
+      rgb(251, 251, 251, 0.7) 16%,
+      rgba(0, 0, 0, 1) 84%
     ),
     url("../../images/alfons-morales-YLSwjSy7stw-unsplash.jpg");
   background-position: center center;
@@ -22,9 +25,13 @@ body {
 .App {
   height: 90vh;
   width: 100%;
+
   display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   justify-content: center;
   align-content: center;
   text-align: center;
+
   color: white;
 }

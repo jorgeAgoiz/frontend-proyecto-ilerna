@@ -1,11 +1,14 @@
+import Header from '../Header/Header'
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 
 const App = () => {
   return (
-    <div className='App'>
-      <h1>Community Readers</h1>
-      <h3>Jorge Agoiz Pedraja</h3>
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <Header />
+      </div>
+    </BrowserRouter>
   )
 }
 
