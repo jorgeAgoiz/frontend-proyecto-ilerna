@@ -38,25 +38,19 @@
 .signup-form input {
   font-size: 1.1rem;
   width: 60%;
-  margin: 0.2rem;
+  margin: 0.3rem;
   font-family: "Roboto Mono", monospace;
 }
-.confirm-btn {
+
+#error {
   font-size: 1.1rem;
   font-weight: bold;
-  font-family: "Roboto Mono", monospace;
-  background-color: rgb(231, 230, 142);
-  padding: 0.2rem;
-  border-radius: 0.8rem;
-  border: 1px solid black;
-}
-.confirm-btn:hover {
-  cursor: pointer;
-  background-color: rgb(231, 229, 110);
   letter-spacing: 1px;
-
-  outline: 2px solid black;
+  color: rgb(202, 2, 2);
 }
-.confirm-btn:active {
-  background-color: rgb(197, 245, 108);
+#success {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: rgb(16, 158, 58);
 }
