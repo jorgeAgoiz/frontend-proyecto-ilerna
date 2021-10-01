@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
+import { AuthContext } from '../../context/AuthContext'
 import { signinUser } from '../../services/apiCalls'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './Signin.css'
@@ -7,6 +8,9 @@ import './Signin.css'
 const Signin = () => {
   const [error, setError] = useState(null)
   const history = useHistory()
+  const { userLog /* setUserLog */ } = useContext(AuthContext)
+
+  console.log(userLog)
 
   const onHandleForm = async (evt) => {
     evt.preventDefault()
