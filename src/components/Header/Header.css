@@ -42,6 +42,7 @@
 }
 
 .signin {
+  background-color: transparent;
   font-size: 1.2rem;
   color: white;
   font-family: "Roboto Mono", monospace;
@@ -60,6 +61,7 @@
 }
 
 .signup {
+  background-color: transparent;
   font-size: 1.2rem;
   color: white;
   font-family: "Roboto Mono", monospace;

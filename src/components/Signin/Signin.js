@@ -8,9 +8,7 @@ import './Signin.css'
 const Signin = () => {
   const [error, setError] = useState(null)
   const history = useHistory()
-  const { userLog /* setUserLog */ } = useContext(AuthContext)
-
-  console.log(userLog)
+  const { setUserLog } = useContext(AuthContext)
 
   const onHandleForm = async (evt) => {
     evt.preventDefault()
@@ -31,6 +29,7 @@ const Signin = () => {
     if (!userLogged.success) {
       return setError(userLogged.message)
     }
+    setUserLog(userLogged.user)
     setTimeout(() => {
       return history.push('/')
     }, 1000)
