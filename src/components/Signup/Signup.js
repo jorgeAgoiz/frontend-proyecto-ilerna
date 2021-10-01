@@ -49,11 +49,11 @@ const Signup = () => {
       {error ? showError(error) : null}
       {success ? showSuccess(success) : null}
       <form className='signup-form' onSubmit={onHandleForm}>
-        <label for='username'>Nombre de usuario:</label>
+        <label htmlFor='username'>Nombre de usuario:</label>
         <input id='username' type='text' name='username' />
-        <label for='password1'>Contraseña:</label>
+        <label htmlFor='password1'>Contraseña:</label>
         <input id='password1' type='password' name='password1' />
-        <label for='password2'>Repetir contraseña:</label>
+        <label htmlFor='password2'>Repetir contraseña:</label>
         <input id='password2' type='password' name='password2' />
         <InputConfirm textValue='Registrar' />
       </form>

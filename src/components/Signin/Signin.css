@@ -1,0 +1,56 @@
+.signin-main {
+  grid-column: 2 / 5;
+  grid-row: 3 / 7;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgb(255, 255, 255, 0.7);
+  color: black;
+  border-radius: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.signin-main h1 {
+  font-size: 2.6rem;
+  letter-spacing: 4px;
+  font-family: "Ephesis", cursive;
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
+  width: 50%;
+  padding: 0.6rem;
+}
+.signin-form label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0.1rem;
+  font-family: "Roboto Mono", monospace;
+}
+.signin-form input {
+  font-size: 1.1rem;
+  width: 60%;
+  margin: 0.3rem;
+  font-family: "Roboto Mono", monospace;
+}
+
+#error {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: rgb(202, 2, 2);
+}
+#success {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: rgb(16, 158, 58);
+}
