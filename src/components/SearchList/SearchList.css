@@ -5,7 +5,7 @@
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(10, 1fr);
 
-  background-color: rgb(255, 255, 255, 0.7);
+  background-color: rgb(255, 255, 255, 0.6);
   color: black;
 }
 .main-title {
@@ -19,7 +19,7 @@
   font-family: "Ephesis", cursive;
   padding: 0.4rem;
   margin: 0.2rem;
-  background-color: rgb(247, 234, 165);
+  background-color: rgb(255, 254, 173);
   border-radius: 50%;
   border: 2px solid black;
 }

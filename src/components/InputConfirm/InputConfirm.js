@@ -1,10 +1,10 @@
 import React from 'react'
 import './InputConfirm.css'
 
-const InputConfirm = ({ textValue }) => {
+const InputConfirm = ({ textValue, nameClass }) => {
   return (
     <>
-      <input className='confirm-btn' type='submit' value={textValue} />
+      <input className={nameClass} type='submit' value={textValue} />
     </>
   )
 }

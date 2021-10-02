@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchBar from '../SearchBar/SearchBar'
 import './SearchList.css'
 
 const SearchList = () => {
@@ -7,6 +8,7 @@ const SearchList = () => {
       <div className='main-title'>
         <h1>Libros de la comunidad</h1>
       </div>
+      <SearchBar />
     </div>
   )
 }

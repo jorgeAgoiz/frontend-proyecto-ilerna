@@ -48,7 +48,7 @@ const Signin = () => {
         <input id='username' type='text' name='username' />
         <label htmlFor='password'>Contraseña:</label>
         <input id='password' type='password' name='password' />
-        <InputConfirm textValue='Iniciar' />
+        <InputConfirm nameClass='confirm-sign-btn' textValue='Iniciar' />
       </form>
     </div>
   )

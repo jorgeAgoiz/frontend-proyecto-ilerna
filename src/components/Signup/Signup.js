@@ -55,12 +55,10 @@ const Signup = () => {
         <input id='password1' type='password' name='password1' />
         <label htmlFor='password2'>Repetir contraseña:</label>
         <input id='password2' type='password' name='password2' />
-        <InputConfirm textValue='Registrar' />
+        <InputConfirm nameClass='confirm-sign-btn' textValue='Registrar' />
       </form>
     </div>
   )
 }
 
 export default Signup
-
-/* Darle funcionalidad llamando a la API */
