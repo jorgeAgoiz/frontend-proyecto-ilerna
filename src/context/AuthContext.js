@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 const completeUser = {
   username: null,
   id: null,
-  created_at: null
+  created_at: null,
+  logged: false
 }
 
 export const AuthContext = React.createContext({})

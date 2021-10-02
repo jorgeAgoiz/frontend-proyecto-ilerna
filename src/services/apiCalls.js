@@ -20,6 +20,7 @@ export const signinUser = (user) => {
       sessionStorage.setItem('username', result.user.username)
       sessionStorage.setItem('user_id', result.user.id)
       sessionStorage.setItem('antiquity', result.user.created_at)
+      result.user.logged = true
       return result
     })
     .catch(err => err)

@@ -1,30 +1,20 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext'
+import useUserLog from '../../hooks/useUserLog'
 import './Header.css'
 
 const Header = () => {
-  const { userLog, setUserLog } = useContext(AuthContext)
+  const { userLog, setUserLog } = useUserLog()
   const history = useHistory()
-
-  useEffect(() => {
-    if (sessionStorage.getItem('username') && !userLog.username) {
-      setUserLog({
-        username: sessionStorage.getItem('username'),
-        id: sessionStorage.getItem('user_id'),
-        created_at: sessionStorage.getItem('antiquity')
-      })
-    }
-  }, [userLog, setUserLog])
 
   const onHandleSignOut = () => {
     sessionStorage.clear()
     setUserLog({
       username: null,
       user_id: null,
-      created_at: null
+      created_at: null,
+      logged: false
     })
-    console.log('probando')
     return history.push('/')
   }
 
@@ -62,5 +52,3 @@ const Header = () => {
 }
 
 export default Header
-/* Podemos mirar en convertir el useEffect en un custom hook
-para simplificar la complejidad del componente */
