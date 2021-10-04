@@ -9,7 +9,7 @@ const ListBooks = ({ allBooks, nextPage, previousPage }) => {
         <tr className='book-card' key={book.id}>
           <td>{book.title}</td>
           <td>{book.author}</td>
-          <td>{book.category}</td>
+          <td>{book.category.toUpperCase()}</td>
           <td>Icono</td>
         </tr>
       )

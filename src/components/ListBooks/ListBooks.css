@@ -6,7 +6,6 @@
   justify-content: center;
   align-content: center;
   padding: 0.6rem;
-  background-color: rgb(245, 207, 194);
 }
 
 .book-table {
@@ -30,28 +29,30 @@
   height: 85%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .book-card {
   width: 100%;
+  height: 5vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  background-color: rgb(232, 247, 242, 0.7);
 }
 .book-card td {
   width: 25%;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   font-family: "Roboto Mono", monospace;
-  padding: 0.2rem;
+  padding: 0.4rem;
 }
 .book-card th {
   width: 24%;
   font-family: "Ephesis", cursive;
-  font-size: 1.8rem;
-  letter-spacing: 2px;
+  font-size: 2rem;
+  letter-spacing: 3px;
   font-weight: bold;
   border-left: 3px solid black;
   border-right: 3px solid black;
