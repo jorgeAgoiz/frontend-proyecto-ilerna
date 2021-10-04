@@ -1,7 +1,8 @@
-import React from 'react'
+import React/* , { useState } */ from 'react'
+/* import { Link } from 'react-dom' */
 import './ListBooks.css'
 
-const ListBooks = ({ allBooks }) => {
+const ListBooks = ({ allBooks, nextPage, previousPage }) => {
   const showBooks = (books) => {
     return books.map(book => {
       return (
@@ -14,12 +15,6 @@ const ListBooks = ({ allBooks }) => {
       )
     })
   }
-
-  /* const showNumPages = () => {
-    const numbers = allBooks.number_pages
-    console.log(numbers)
-  } Aqui haremos un metodo que genere selectores de pagina si es necesario
-  */
 
   return (
     <div className='list-books'>
@@ -36,9 +31,13 @@ const ListBooks = ({ allBooks }) => {
           {showBooks(allBooks.data)}
         </tbody>
       </table>
-      {/* Paginación aquí */}
       <div className='num-pages'>
-        <h2>Paginación</h2>
+        <div className='previous-icon' onClick={previousPage}>
+          <img src='previous.png' alt='book-icon' height='45px' width='45px' />
+        </div>
+        <div className='next-icon' onClick={nextPage}>
+          <img src='next.png' alt='book-icon' height='45px' width='45px' />
+        </div>
       </div>
     </div>
   )

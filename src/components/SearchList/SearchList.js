@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BooksContext } from '../../context/BooksContext'
 import { getAllBooks } from '../../services/apiCalls'
 import ListBooks from '../ListBooks/ListBooks'
@@ -7,12 +7,25 @@ import './SearchList.css'
 
 const SearchList = () => {
   const { books, setBooks } = useContext(BooksContext)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
-    if (!books.success) {
-      getAllBooks(1, 'title', 'ASC').then(data => setBooks(data))
+    const currentPage = parseInt(books.page)
+    if (!books.success || currentPage !== page) {
+      getAllBooks(page, 'title', 'ASC').then(data => setBooks(data))
     }
-  }, [books, setBooks])
+  }, [books, setBooks, page])
+
+  const nextPage = () => {
+    if (page < books.number_pages) {
+      return setPage(page + 1)
+    }
+  }
+  const previousPage = () => {
+    if (page > 1) {
+      return setPage(page - 1)
+    }
+  }
 
   return (
     <div className='search-list'>
@@ -20,13 +33,10 @@ const SearchList = () => {
         <h1>Libros de la comunidad</h1>
       </div>
       <SearchBar />
-      {books.success ? <ListBooks allBooks={books} /> : null}
+      {books.success ? <ListBooks allBooks={books} nextPage={nextPage} previousPage={previousPage} /> : null}
 
     </div>
   )
 }
 
 export default SearchList
-
-/* Habra que plantear la paginación, y la accesibilidad a los datos
-de cada libro en particular */
