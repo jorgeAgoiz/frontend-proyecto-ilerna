@@ -25,3 +25,13 @@ export const signinUser = (user) => {
     })
     .catch(err => err)
 }
+
+export const getAllBooks = (page, order, direction) => {
+  return fetch(`http://localhost:3012/books?page=${page}&order=${order}&direction=${direction}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(result => result.json())
+    .then(data => data)
+    .catch(err => err)
+}

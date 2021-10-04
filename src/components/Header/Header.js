@@ -40,9 +40,9 @@ const Header = () => {
     <div className='header'>
       <div className='title-logo'>
         <h1>Community Readers</h1>
-        <a href='/'>
+        <Link to='/'>
           <img src='https://img.icons8.com/external-justicon-lineal-color-justicon/64/000000/external-book-office-stationery-justicon-lineal-color-justicon.png' alt='book-icon' height='45px' width='45px' />
-        </a>
+        </Link>
       </div>
       {
         loggedBtns()

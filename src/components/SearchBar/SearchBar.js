@@ -5,7 +5,7 @@ import './SearchBar.css'
 const SearchBar = () => {
   const onHandleForm = (evt) => {
     evt.preventDefault()
-    console.log('Buscando su libro...')
+    console.log(`Buscando su libro... ${evt.target.title.value}`)
     /* Aqui llamada a la API para buscar un libro especificado, si lo encuentra
     le devolvemos la ficha y si no lo encuentra le devolvemos un mensaje de que no
     existe el libro solicitado en la comunidad */

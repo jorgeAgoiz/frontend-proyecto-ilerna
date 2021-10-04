@@ -1,0 +1,5 @@
+.list-books {
+  grid-column: 2 / 8;
+  grid-row: 3 / 10;
+  background-color: coral;
+}

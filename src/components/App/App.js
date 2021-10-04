@@ -7,6 +7,7 @@ import Signin from '../Signin/Signin'
 import { AuthContext } from '../../context/AuthContext'
 import { useContext } from 'react'
 import SearchList from '../SearchList/SearchList'
+import { BooksContextProvider } from '../../context/BooksContext'
 
 const App = () => {
   const { userLog } = useContext(AuthContext)
@@ -14,12 +15,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className='App'>
-        <Header />
-        <Switch>
-          <Route path='/' exact component={!userLog.logged ? MainCover : SearchList} />
-          <Route path='/signup' exact component={Signup} />
-          <Route path='/signin' exact component={Signin} />
-        </Switch>
+        <BooksContextProvider>
+          <Header />
+          <Switch>
+            <Route path='/' exact component={!userLog.logged ? MainCover : SearchList} />
+            <Route path='/signup' exact component={Signup} />
+            <Route path='/signin' exact component={Signin} />
+          </Switch>
+        </BooksContextProvider>
       </div>
     </BrowserRouter>
   )
