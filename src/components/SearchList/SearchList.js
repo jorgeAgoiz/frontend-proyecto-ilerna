@@ -20,7 +20,8 @@ const SearchList = () => {
         <h1>Libros de la comunidad</h1>
       </div>
       <SearchBar />
-      <ListBooks allBooks={books} />
+      {books.success ? <ListBooks allBooks={books} /> : null}
+
     </div>
   )
 }
