@@ -2,10 +2,11 @@ import React from 'react'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './SearchBar.css'
 
-const SearchBar = () => {
+const SearchBar = ({ filterATitle }) => {
   const onHandleForm = (evt) => {
     evt.preventDefault()
     console.log(`Buscando su libro... ${evt.target.title.value}`)
+    filterATitle()
     /* Aqui llamada a la API para buscar un libro especificado, si lo encuentra
     le devolvemos la ficha y si no lo encuentra le devolvemos un mensaje de que no
     existe el libro solicitado en la comunidad */
@@ -24,5 +25,3 @@ const SearchBar = () => {
 }
 
 export default SearchBar
-
-// GET => "/books?page&order&direction"
