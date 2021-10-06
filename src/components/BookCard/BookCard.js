@@ -3,11 +3,13 @@ import './BookCard.css'
 import { useParams } from 'react-router'
 import { BooksContext } from '../../context/BooksContext'
 import { getAllBooks } from '../../services/apiCalls'
+import ReviewsModal from '../ReviewsModal/ReviewsModal'
 
 const BookCard = () => {
   const { bookId } = useParams()
   const { books, setBooks } = useContext(BooksContext)
   const [bookDetails, setBookDetails] = useState()
+  const [modal, setModal] = useState(false)
 
   useEffect(() => {
     // Si el array contiene libros y existe
@@ -21,9 +23,15 @@ const BookCard = () => {
     }
   }, [books, bookId, setBooks])
 
+  const showReviewsModal = () => {
+    setModal(true)
+  }
+  const hideReviewsModal = () => {
+    setModal(false)
+  }
+
   /* Tengo que seguir aquí dandoel forma a la tarjeta del libro */
   const showBookDetail = () => {
-    console.log(bookDetails)
     const addDate = new Date(bookDetails.created_at).toLocaleDateString()
     return (
       <>
@@ -44,7 +52,6 @@ const BookCard = () => {
             <img src='../valoration.png' alt='val-icon' width='40px' height='40px' />
             <p>{bookDetails.rating}</p>
           </div>
-
         </div>
         <div className='book-created-at'>
           <h2>Añadido:</h2>
@@ -53,6 +60,10 @@ const BookCard = () => {
         <div className='book-description'>
           <h2>Descripción:</h2>
           <p>{bookDetails.book_description}</p>
+        </div>
+        <div className='book-reviews'>
+          {modal ? <ReviewsModal onClose={hideReviewsModal} bookInfo={bookDetails} /> : null}
+          <button onClick={showReviewsModal}>Ver Reseñas</button>
         </div>
       </>
     )

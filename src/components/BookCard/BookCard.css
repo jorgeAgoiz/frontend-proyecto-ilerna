@@ -122,5 +122,13 @@
 .book-description p {
   font-family: "Roboto Mono", monospace;
   color: black;
-  font-size: 1rem;
+  font-size: 0.9rem;
+}
+
+.book-reviews {
+  grid-row: 6 / 7;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

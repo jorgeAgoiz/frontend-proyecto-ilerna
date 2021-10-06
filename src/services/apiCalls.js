@@ -35,3 +35,13 @@ export const getAllBooks = (page, order, direction) => {
     .then(data => data)
     .catch(err => err)
 }
+
+export const getAllReviews = (idBook) => {
+  return fetch(`http://localhost:3012/book_reviews/${idBook}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(result => result.json())
+    .then(data => data)
+    .catch(err => err)
+}
