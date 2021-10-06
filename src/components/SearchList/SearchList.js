@@ -9,7 +9,7 @@ const SearchList = () => {
   const { books, setBooks } = useContext(BooksContext)
   const [page, setPage] = useState(1)
   /* Esto para la busqueda por titulo */
-  /* const [searchTitle, setSearchTitle] = useState(false) */
+  /* const [byTitle, setByTitle] = useState(false) */
   const [order, setOrder] = useState('title')
   const [direction, setDirection] = useState('ASC')
   const [newRequest, setNewRequest] = useState(false)
@@ -17,6 +17,9 @@ const SearchList = () => {
   useEffect(() => {
     const currentPage = parseInt(books.page)
     if (!books.success || currentPage !== page || newRequest) {
+      sessionStorage.setItem('page', page)
+      sessionStorage.setItem('order', order)
+      sessionStorage.setItem('direction', direction)
       getAllBooks(page, order, direction).then(data => setBooks(data))
       return setNewRequest(false)
     }
@@ -35,6 +38,8 @@ const SearchList = () => {
 
   const filterATitle = () => {
     console.log('Buscando por título!!')
+    /* Para darle funcionalidad a la busqueda por titulo debemos modificar el backend,
+    añadiendo un nuevo controlador */
   }
 
   const changingQuery = (newOrder, newDirection) => {
