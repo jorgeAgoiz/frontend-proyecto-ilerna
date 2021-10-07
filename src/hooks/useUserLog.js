@@ -6,9 +6,11 @@ const useUserLog = () => {
 
   useEffect(() => {
     if (sessionStorage.getItem('username') && !userLog.logged) {
+      const userId = parseInt(sessionStorage.getItem('user_id'))
+
       setUserLog({
         username: sessionStorage.getItem('username'),
-        id: sessionStorage.getItem('user_id'),
+        id: userId,
         created_at: sessionStorage.getItem('antiquity'),
         logged: true
       })

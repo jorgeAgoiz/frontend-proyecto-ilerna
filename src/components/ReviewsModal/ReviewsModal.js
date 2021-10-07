@@ -15,6 +15,9 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
   }, [bookInfo])
 
   const showReviews = () => {
+    console.log(userLog)
+    console.log(reviews)
+
     return reviews.map(rev => {
       return (
         <div className='review-ind' key={rev.id}>
@@ -27,7 +30,7 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
             </div>
           </div>
           {
-            userLog.id === rev.id_user.toString() ? <EditDelBtns nameClass='review-btn' /> : null
+            userLog.id === rev.id_user ? <EditDelBtns nameClass='review-btn' /> : null
           }
         </div>
       )
