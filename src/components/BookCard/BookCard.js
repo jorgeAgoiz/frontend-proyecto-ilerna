@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './BookCard.css'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router-dom'
 import { BooksContext } from '../../context/BooksContext'
 import { getAllBooks } from '../../services/apiCalls'
 import ReviewsModal from '../ReviewsModal/ReviewsModal'
@@ -10,6 +10,9 @@ const BookCard = () => {
   const { books, setBooks } = useContext(BooksContext)
   const [bookDetails, setBookDetails] = useState()
   const [modal, setModal] = useState(false)
+  const history = useHistory()
+
+  console.log(books)
 
   useEffect(() => {
     // Si el array contiene libros y existe
@@ -19,7 +22,10 @@ const BookCard = () => {
       const page = sessionStorage.getItem('page')// Cogemos del sessionStorage los datos
       const order = sessionStorage.getItem('order')
       const direction = sessionStorage.getItem('direction')
-      getAllBooks(page, order, direction).then(data => setBooks(data))// Hacemos una nueva llamada a la api para llenar el contexto
+      getAllBooks(page, order, direction).then(data => setBooks(data)).catch(err => {
+        console.log(err)
+        return history.push('/')
+      }) // Hacemos una nueva llamada a la api para llenar el contexto
     }
   }, [books, bookId, setBooks])
 
@@ -29,8 +35,6 @@ const BookCard = () => {
   const hideReviewsModal = () => {
     setModal(false)
   }
-
-  /* Tengo que seguir aquí dandoel forma a la tarjeta del libro */
   const showBookDetail = () => {
     const addDate = new Date(bookDetails.created_at).toLocaleDateString()
     return (

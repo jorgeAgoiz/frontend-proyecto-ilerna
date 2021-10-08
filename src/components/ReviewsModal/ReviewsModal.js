@@ -15,9 +15,6 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
   }, [bookInfo])
 
   const showReviews = () => {
-    console.log(userLog)
-    console.log(reviews)
-
     return reviews.map(rev => {
       return (
         <div className='review-ind' key={rev.id}>
@@ -30,7 +27,7 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
             </div>
           </div>
           {
-            userLog.id === rev.id_user ? <EditDelBtns nameClass='review-btn' /> : null
+            userLog.id === rev.id_user ? <EditDelBtns nameClass='review-btn' idBook={rev.id_book} /> : null
           }
         </div>
       )
@@ -38,7 +35,10 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
   }
 
   return ReactDOM.createPortal(
-    <div className='reviews-main' onClick={onClose}>
+    <div className='reviews-main'>
+      <div id='reviews-close'>
+        <img onClick={onClose} src='../cancel.png' alt='exit-icon' width='30px' height='30px' />
+      </div>
       <h1>Reseñas</h1>
       {
           showReviews()

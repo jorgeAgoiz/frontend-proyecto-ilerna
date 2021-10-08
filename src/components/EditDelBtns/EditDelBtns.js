@@ -1,10 +1,16 @@
 import React from 'react'
+import './EditDelBtns.css'
+import { Link } from 'react-router-dom'
 
-const EditDelBtns = ({ nameClass }) => {
+const EditDelBtns = ({ nameClass, idBook }) => {
   return (
-    <div>
-      <button><img src='../editing.png' width='25px' height='25px' /></button>
-      <button><img src='../bin.png' width='25px' height='25px' /></button>
+    <div id='review-btns'>
+      <Link to={`/book/edit-review/${idBook}`}>
+        <img src='../editing.png' alt='edit-icon' width='25px' height='25px' />
+      </Link>
+      <Link to={`/book/delete-review/${idBook}`}>
+        <img src='../bin.png' alt='delete-icon' width='25px' height='25px' />
+      </Link>
     </div>
   )
 }
