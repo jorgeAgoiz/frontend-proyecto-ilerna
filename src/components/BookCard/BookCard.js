@@ -4,15 +4,19 @@ import { useHistory, useParams } from 'react-router-dom'
 import { BooksContext } from '../../context/BooksContext'
 import { getAllBooks } from '../../services/apiCalls'
 import ReviewsModal from '../ReviewsModal/ReviewsModal'
+import { AuthContext } from '../../context/AuthContext'
 
 const BookCard = () => {
   const { bookId } = useParams()
   const { books, setBooks } = useContext(BooksContext)
+  const { userLog } = useContext(AuthContext)
   const [bookDetails, setBookDetails] = useState()
   const [modal, setModal] = useState(false)
   const history = useHistory()
 
-  console.log(books)
+  console.log(userLog.id)
+  console.log(bookDetails)
+  /* Ahora si los IDS coinciden deberiamos mostrar los botones de edit y delete libro */
 
   useEffect(() => {
     // Si el array contiene libros y existe
@@ -68,6 +72,16 @@ const BookCard = () => {
         <div className='book-reviews'>
           {modal ? <ReviewsModal onClose={hideReviewsModal} bookInfo={bookDetails} /> : null}
           <button onClick={showReviewsModal}>Ver Reseñas</button>
+        </div>
+        <div className='book-edit'>
+          <button onClick={() => console.log('Whats up??')}>
+            <img src='../editing.png' alt='edit-icon' width='50px' height='50px' />
+          </button>
+        </div>
+        <div className='book-delete'>
+          <button onClick={() => console.log('Whats up??')}>
+            <img src='../bin.png' alt='delete-icon' width='50px' height='50px' />
+          </button>
         </div>
       </>
     )

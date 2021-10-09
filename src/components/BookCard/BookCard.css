@@ -127,7 +127,7 @@
 
 .book-reviews {
   grid-row: 6 / 7;
-  grid-column: 2 / 3;
+  grid-column: 3 / 4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,6 +135,45 @@
 .book-reviews button {
   width: 80%;
   min-height: 5vh;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: "Roboto Mono", monospace;
+  background-color: transparent;
+  border: 3px solid black;
+  border-radius: 12px;
 } /* Estilar este boton */
+.book-reviews button:hover {
+  cursor: pointer;
+  background-color: rgb(226, 213, 99);
+  font-weight: bold;
+}
+
+.book-edit {
+  grid-row: 6 / 7;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-edit button {
+  border: none;
+  background-color: transparent;
+}
+.book-edit button:hover {
+  cursor: pointer;
+}
+
+.book-delete {
+  grid-row: 6 / 7;
+  grid-column: 4 / 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-delete button {
+  border: none;
+  background-color: transparent;
+}
+.book-delete button:hover {
+  cursor: pointer;
+}
+
