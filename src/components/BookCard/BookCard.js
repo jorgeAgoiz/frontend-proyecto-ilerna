@@ -14,22 +14,17 @@ const BookCard = () => {
   const [modal, setModal] = useState(false)
   const history = useHistory()
 
-  console.log(userLog.id)
-  console.log(bookDetails)
-  /* Ahora si los IDS coinciden deberiamos mostrar los botones de edit y delete libro */
-
   useEffect(() => {
-    // Si el array contiene libros y existe
-    if (books.data && books.data.length > 0) { // Seteamos nuestro estado de componente con el libro fijado
+    if (books.data && books.data.length > 0) {
       setBookDetails(books.data.filter(book => book.id.toString() === bookId)[0])
-    } else { // Si el array no existe o no contiene libros
-      const page = sessionStorage.getItem('page')// Cogemos del sessionStorage los datos
+    } else {
+      const page = sessionStorage.getItem('page')
       const order = sessionStorage.getItem('order')
       const direction = sessionStorage.getItem('direction')
       getAllBooks(page, order, direction).then(data => setBooks(data)).catch(err => {
         console.log(err)
         return history.push('/')
-      }) // Hacemos una nueva llamada a la api para llenar el contexto
+      })
     }
   }, [books, bookId, setBooks])
 
@@ -73,16 +68,25 @@ const BookCard = () => {
           {modal ? <ReviewsModal onClose={hideReviewsModal} bookInfo={bookDetails} /> : null}
           <button onClick={showReviewsModal}>Ver Reseñas</button>
         </div>
-        <div className='book-edit'>
-          <button onClick={() => console.log('Whats up??')}>
-            <img src='../editing.png' alt='edit-icon' width='50px' height='50px' />
-          </button>
-        </div>
-        <div className='book-delete'>
-          <button onClick={() => console.log('Whats up??')}>
-            <img src='../bin.png' alt='delete-icon' width='50px' height='50px' />
-          </button>
-        </div>
+        {
+          bookDetails.id_user === userLog.id
+            ? (
+              <>
+                <div className='book-edit'>
+                  <button onClick={() => console.log('Whats up??')}>
+                    <img src='../editing.png' alt='edit-icon' width='50px' height='50px' />
+                  </button>
+                </div>
+                <div className='book-delete'>
+                  <button onClick={() => console.log('Whats up??')}>
+                    <img src='../bin.png' alt='delete-icon' width='50px' height='50px' />
+                  </button>
+                </div>
+              </>
+              )
+            : null
+        }
+
       </>
     )
   }
@@ -99,11 +103,3 @@ const BookCard = () => {
 }
 
 export default BookCard
-
-/* Apuntes:
-
-- Si el usuario que accede es el autor del libro, daremos la opción de eliminar o modificar el libro
-
-- No hara falta llamar a la api porque siempre que accedamos a traves del listado a los detalles del libro,
-ese libro estara en el Context
-*/

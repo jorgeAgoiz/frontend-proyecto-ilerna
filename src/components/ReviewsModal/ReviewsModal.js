@@ -11,7 +11,12 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
 
   useEffect(() => {
     getAllReviews(bookInfo.id)
-      .then(result => setReviews(result.data))
+      .then(result => {
+        setReviews(result.data)
+      })
+      .catch(err => {
+        return console.log(err)
+      })
   }, [bookInfo])
 
   const showReviews = () => {
@@ -41,14 +46,12 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
       </div>
       <h1>Reseñas</h1>
       {
-          showReviews()
+        reviews
+          ? showReviews()
+          : null
       }
     </div>, document.getElementById('modal')
   )
 }
 
 export default ReviewsModal
-
-/* Aquí hay mucho que estilar, comenzando por las reseñas con sus
-respectivas opciones. Donde poder aportar tu reseña también. y ademas actualizar
-el rating cada vez que se añada una reseña nueva. */
