@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { deleteReview } from '../../services/apiCalls'
 import './EditDelBtns.css'
 
@@ -13,15 +14,11 @@ const EditDelBtns = ({ nameClass, idBook, idReview, setReviews, reviews, setErro
     return setReviews(newArray)
   }
 
-  const onHandleEdit = () => {
-    console.log('Editando la review: ' + idReview)
-  }
-
   return (
     <div id='review-btns'>
-      <button onClick={onHandleEdit}>
+      <Link to={`/edit-review/${idReview}`}>
         <img src='../editing.png' alt='edit-icon' width='25px' height='25px' />
-      </button>
+      </Link>
       <button onClick={onHandleDelete}>
         <img src='../bin.png' alt='delete-icon' width='25px' height='25px' />
       </button>

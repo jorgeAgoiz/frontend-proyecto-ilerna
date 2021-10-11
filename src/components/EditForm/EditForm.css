@@ -1,0 +1,16 @@
+.edit-review {
+  grid-column: 1 / 6;
+  grid-row: 3 / 7;
+  display: flex;
+  background-color: rgb(255, 255, 255, 0.5);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.edit-review h1 {
+  font-size: 2.8rem;
+  font-family: "Ephesis", cursive;
+  letter-spacing: 3px;
+  color: black;
+}
+/* Estilemos este componente */
