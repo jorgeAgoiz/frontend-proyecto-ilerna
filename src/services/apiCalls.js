@@ -45,3 +45,18 @@ export const getAllReviews = (idBook) => {
     .then(data => data)
     .catch(err => err)
 }
+
+export const deleteReview = (idReview) => {
+  const data = {
+    id: idReview
+  }
+
+  return fetch('http://localhost:3012/review', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(result => result.json())
+    .then(response => response)
+    .catch(err => err)
+}

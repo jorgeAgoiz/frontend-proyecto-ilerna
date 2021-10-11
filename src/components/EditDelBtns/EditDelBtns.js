@@ -1,19 +1,32 @@
 import React from 'react'
+import { deleteReview } from '../../services/apiCalls'
 import './EditDelBtns.css'
-import { Link } from 'react-router-dom'
 
-const EditDelBtns = ({ nameClass, idBook }) => {
+const EditDelBtns = ({ nameClass, idBook, idReview, setReviews, reviews, setError }) => {
+  const onHandleDelete = async () => {
+    const result = await deleteReview(idReview)
+    if (!result.success) {
+      return setError(result.message)
+    }
+    setError(null)
+    const newArray = reviews.filter(rev => rev.id !== idReview)
+    return setReviews(newArray)
+  }
+
+  const onHandleEdit = () => {
+    console.log('Editando la review: ' + idReview)
+  }
+
   return (
     <div id='review-btns'>
-      <Link to={`/book/edit-review/${idBook}`}>
+      <button onClick={onHandleEdit}>
         <img src='../editing.png' alt='edit-icon' width='25px' height='25px' />
-      </Link>
-      <Link to={`/book/delete-review/${idBook}`}>
+      </button>
+      <button onClick={onHandleDelete}>
         <img src='../bin.png' alt='delete-icon' width='25px' height='25px' />
-      </Link>
+      </button>
     </div>
   )
 }
 
 export default EditDelBtns
-/* Aqui habra que darle la funcionalidad de Editar y eliminar la review */

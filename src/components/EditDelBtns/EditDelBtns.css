@@ -7,3 +7,7 @@
   gap: 0.4rem;
   flex-wrap: wrap;
 }
+#review-btns button {
+  border: none;
+  cursor: pointer;
+}
