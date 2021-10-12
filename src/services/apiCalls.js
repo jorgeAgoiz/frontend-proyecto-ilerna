@@ -60,3 +60,29 @@ export const deleteReview = (idReview) => {
     .then(response => response)
     .catch(err => err)
 }
+
+export const getSpecificReview = (idReview) => {
+  return fetch(`http://localhost:3012/review/${idReview}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }).then(result => result.json())
+    .then(data => data)
+    .catch(err => err)
+}
+
+export const updateReview = (id, valoration, textReview, idUser) => {
+  const data = {
+    id,
+    valoration,
+    text_review: textReview,
+    id_user: idUser
+  }
+  return fetch('http://localhost:3012/review', {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(result => result.json())
+    .then(data => data)
+    .catch(err => err)
+}

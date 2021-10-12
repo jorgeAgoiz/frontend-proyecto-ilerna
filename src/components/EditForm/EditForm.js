@@ -1,31 +1,40 @@
-import React, { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { BooksContext } from '../../context/BooksContext'
+import React, { useState } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
+
+import useReviewData from '../../hooks/useReviewData'
+import { updateReview } from '../../services/apiCalls'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './EditForm.css'
 
 const EditForm = () => {
   const { reviewId } = useParams()
-  const { books } = useContext(BooksContext)
+  const { rev } = useReviewData(reviewId)
+  const [error, setError] = useState(null)
+  const history = useHistory()
 
-  useEffect(() => {
-    console.log(books)
-  }, [reviewId])
-
-  const onHandleSubmit = (evt) => {
+  const onHandleSubmit = async (evt) => {
     evt.preventDefault()
-    console.log(evt.target.valoration.value)
-    console.log(evt.target.text_review.value)
+    const valoration = evt.target.valoration.value
+    const textReview = evt.target.text_review.value
+    const id = rev.id
+    const idUser = rev.id_user
+
+    try {
+      const response = await updateReview(id, valoration, textReview, idUser)
+      if (!response.success) {
+        return setError(response.message)
+      }
+      setError(null)
+      return history.push(`/book/${rev.id_book}`)
+    } catch (error) {
+      return setError(error.message)
+    }
   }
 
-  return (
-    <div className='edit-review'>
-      <h1>Editar Reseña</h1>
-      <form onSubmit={onHandleSubmit}>
-        <label htmlFor='text-review'>Reseña: </label>
-        <textarea id='text_review' name='text_review' maxLength='1200' />
-        <label>Valoración: </label>
-        <select name='valoration' id='valoration'>
+  const showSelectMenu = (rev) => {
+    return (
+      <>
+        <select name='valoration' id='valoration' defaultValue={rev.valoration} required>
           <option value='0'>0</option>
           <option value='1'>1</option>
           <option value='2'>2</option>
@@ -33,6 +42,26 @@ const EditForm = () => {
           <option value='4'>4</option>
           <option value='5'>5</option>
         </select>
+      </>
+    )
+  }
+
+  return (
+    <div className='edit-review'>
+      <h1>Editar Reseña</h1>
+      {error ? <p>{error}</p> : null}{/* Estilar este error */}
+      <form onSubmit={onHandleSubmit}>
+        <label htmlFor='text-review'>Reseña: </label>
+        <textarea
+          id='text_review'
+          name='text_review'
+          maxLength='1200'
+          defaultValue={rev ? rev.text_review : null}
+        />
+        <label>Valoración: </label>
+        {
+          rev ? showSelectMenu(rev) : null
+        }
         <InputConfirm nameClass='confirm-search-btn' textValue='Guardar' />
       </form>
     </div>
@@ -40,3 +69,5 @@ const EditForm = () => {
 }
 
 export default EditForm
+
+/* Tenemos que añadir un boton cancelar para hacerlo mas accesible */
