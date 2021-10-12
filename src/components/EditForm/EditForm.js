@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { BooksContext } from '../../context/BooksContext'
+import InputConfirm from '../InputConfirm/InputConfirm'
 import './EditForm.css'
 
 const EditForm = () => {
-  const params = useParams()
-  console.log(params.reviewId)
+  const { reviewId } = useParams()
+  const { books } = useContext(BooksContext)
+
+  useEffect(() => {
+    console.log(books)
+  }, [reviewId])
 
   const onHandleSubmit = (evt) => {
     evt.preventDefault()
@@ -20,13 +26,14 @@ const EditForm = () => {
         <textarea id='text_review' name='text_review' maxLength='1200' />
         <label>Valoración: </label>
         <select name='valoration' id='valoration'>
+          <option value='0'>0</option>
           <option value='1'>1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
           <option value='4'>4</option>
           <option value='5'>5</option>
         </select>
-        <input type='submit' />
+        <InputConfirm nameClass='confirm-search-btn' textValue='Guardar' />
       </form>
     </div>
   )
