@@ -17,7 +17,7 @@ const EditForm = () => {
       <h1>Editar Reseña</h1>
       <form onSubmit={onHandleSubmit}>
         <label htmlFor='text-review'>Reseña: </label>
-        <input id='text_review' type='text' name='text_review' />
+        <textarea id='text_review' name='text_review' maxLength='1200' />
         <label>Valoración: </label>
         <select name='valoration' id='valoration'>
           <option value='1'>1</option>

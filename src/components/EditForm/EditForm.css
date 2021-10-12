@@ -13,4 +13,17 @@
   letter-spacing: 3px;
   color: black;
 }
+.edit-review form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70%;
+  width: 100%;
+}
+#text_review {
+  width: 70vw;
+  height: 20vh;
+  resize: none;
+}
 /* Estilemos este componente */
