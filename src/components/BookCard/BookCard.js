@@ -29,6 +29,10 @@ const BookCard = () => {
     return history.push('/')
   }
 
+  const onHandleEditBook = () => {
+    return history.push(`/edit-book/${bookDetails.id}`)
+  }
+
   const showBookDetail = () => {
     const addDate = new Date(bookDetails.created_at).toLocaleDateString()
     return (
@@ -69,7 +73,7 @@ const BookCard = () => {
             ? (
               <>
                 <div className='book-edit'>
-                  <button onClick={() => history.push('/')}>
+                  <button onClick={onHandleEditBook}>
                     <img src='../editing.png' alt='edit-icon' width='50px' height='50px' />
                   </button>
                 </div>

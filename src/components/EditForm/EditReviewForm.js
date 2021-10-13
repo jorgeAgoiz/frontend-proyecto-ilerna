@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-
 import useReviewData from '../../hooks/useReviewData'
 import { updateReview } from '../../services/apiCalls'
 import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
-import './EditForm.css'
+import './EditReviewForm.css'
 
-const EditForm = () => {
+const EditReviewForm = () => {
   const { reviewId } = useParams()
   const { rev } = useReviewData(reviewId)
   const [error, setError] = useState(null)
@@ -77,6 +76,6 @@ const EditForm = () => {
   )
 }
 
-export default EditForm
+export default EditReviewForm
 
 /* Tenemos que añadir un boton cancelar para hacerlo mas accesible */
