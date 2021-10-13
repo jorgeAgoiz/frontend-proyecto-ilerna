@@ -9,7 +9,7 @@ import { useContext } from 'react'
 import SearchList from '../SearchList/SearchList'
 import { BooksContextProvider } from '../../context/BooksContext'
 import BookCard from '../BookCard/BookCard'
-import EditReviewForm from '../EditForm/EditReviewForm'
+import EditReviewForm from '../EditReviewForm/EditReviewForm'
 import EditBookForm from '../EditBookForm/EditBookForm'
 
 const App = () => {
