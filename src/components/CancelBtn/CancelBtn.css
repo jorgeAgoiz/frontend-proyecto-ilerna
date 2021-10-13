@@ -1,0 +1,21 @@
+.cancel-generic-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: "Roboto Mono", monospace;
+  letter-spacing: 2px;
+  background-color: rgb(238, 165, 143);
+  padding: 0.2rem;
+  margin: 0.2rem;
+  border-radius: 0.8rem;
+  border: 1px solid black;
+  min-width: 14vw;
+}
+.cancel-generic-btn:hover {
+  cursor: pointer;
+  background-color: rgb(241, 115, 92);
+  letter-spacing: 3px;
+  outline: 2px solid black;
+}
+.cancel-generic-btn:active {
+  background-color: rgb(247, 68, 45);
+}

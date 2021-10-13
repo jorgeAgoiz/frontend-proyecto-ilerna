@@ -36,6 +36,21 @@ export const getAllBooks = (page, order, direction) => {
     .catch(err => err)
 }
 
+export const deleteBook = (id) => {
+  const data = {
+    id
+  }
+
+  return fetch('http://localhost:3012/books', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(result => result.json())
+    .then(data => data)
+    .catch(err => err)
+}
+
 export const getAllReviews = (idBook) => {
   return fetch(`http://localhost:3012/book_reviews/${idBook}`, {
     method: 'GET',

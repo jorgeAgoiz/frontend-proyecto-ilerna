@@ -1,32 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import './BookCard.css'
-import { useHistory, useParams } from 'react-router-dom'
-import { BooksContext } from '../../context/BooksContext'
-import { getAllBooks } from '../../services/apiCalls'
 import ReviewsModal from '../ReviewsModal/ReviewsModal'
 import { AuthContext } from '../../context/AuthContext'
+import useBookData from '../../hooks/useBookData'
+import { deleteBook } from '../../services/apiCalls'
 
 const BookCard = () => {
   const { bookId } = useParams()
-  const { books, setBooks } = useContext(BooksContext)
   const { userLog } = useContext(AuthContext)
-  const [bookDetails, setBookDetails] = useState()
+  const { history, bookDetails } = useBookData(bookId)
   const [modal, setModal] = useState(false)
-  const history = useHistory()
-
-  useEffect(() => {
-    if (books.data && books.data.length > 0) {
-      setBookDetails(books.data.filter(book => book.id.toString() === bookId)[0])
-    } else {
-      const page = sessionStorage.getItem('page')
-      const order = sessionStorage.getItem('order')
-      const direction = sessionStorage.getItem('direction')
-      getAllBooks(page, order, direction).then(data => setBooks(data)).catch(err => {
-        console.log(err)
-        return history.push('/')
-      })
-    }
-  }, [books, bookId, setBooks])
+  const [error, setError] = useState(null)
 
   const showReviewsModal = () => {
     setModal(true)
@@ -34,6 +19,16 @@ const BookCard = () => {
   const hideReviewsModal = () => {
     setModal(false)
   }
+
+  const onHandleDeleteBook = async (evt) => {
+    evt.preventDefault()
+    const deletedBook = await deleteBook(bookDetails.id)
+    if (!deletedBook.success) {
+      return setError(deletedBook.message)
+    }
+    return history.push('/')
+  }
+
   const showBookDetail = () => {
     const addDate = new Date(bookDetails.created_at).toLocaleDateString()
     return (
@@ -61,6 +56,7 @@ const BookCard = () => {
           <p>{addDate}</p>
         </div>
         <div className='book-description'>
+          {error ? (<p>{error}</p>) : null}{/* Estilar este error */}
           <h2>Descripción:</h2>
           <p>{bookDetails.book_description}</p>
         </div>
@@ -73,12 +69,12 @@ const BookCard = () => {
             ? (
               <>
                 <div className='book-edit'>
-                  <button onClick={() => console.log('Whats up??')}>
+                  <button onClick={() => history.push('/')}>
                     <img src='../editing.png' alt='edit-icon' width='50px' height='50px' />
                   </button>
                 </div>
                 <div className='book-delete'>
-                  <button onClick={() => console.log('Whats up??')}>
+                  <button onClick={onHandleDeleteBook}>
                     <img src='../bin.png' alt='delete-icon' width='50px' height='50px' />
                   </button>
                 </div>
@@ -103,3 +99,5 @@ const BookCard = () => {
 }
 
 export default BookCard
+
+/* Gran limpieza de codigo y diseccionar en componentes mas pequeños */

@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 
 import useReviewData from '../../hooks/useReviewData'
 import { updateReview } from '../../services/apiCalls'
+import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './EditForm.css'
 
@@ -29,6 +30,11 @@ const EditForm = () => {
     } catch (error) {
       return setError(error.message)
     }
+  }
+
+  const onHandleCancel = (evt) => {
+    evt.preventDefault()
+    return history.goBack()
   }
 
   const showSelectMenu = (rev) => {
@@ -62,7 +68,10 @@ const EditForm = () => {
         {
           rev ? showSelectMenu(rev) : null
         }
-        <InputConfirm nameClass='confirm-search-btn' textValue='Guardar' />
+        <div id='btns-group'>
+          <InputConfirm nameClass='confirm-search-btn' textValue='Guardar' />
+          <CancelBtn nameClass='cancel-generic-btn' text='Cancelar' onClickFunc={onHandleCancel} />
+        </div>
       </form>
     </div>
   )

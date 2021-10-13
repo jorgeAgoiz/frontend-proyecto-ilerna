@@ -34,7 +34,6 @@
   cursor: pointer;
   background-color: rgb(231, 229, 110);
   letter-spacing: 3px;
-
   outline: 2px solid black;
 }
 .confirm-search-btn:active {
