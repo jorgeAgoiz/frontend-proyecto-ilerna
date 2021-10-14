@@ -36,6 +36,16 @@ export const getAllBooks = (page, order, direction) => {
     .catch(err => err)
 }
 
+export const getSpecificBook = (id) => {
+  return fetch(`http://localhost:3012/book/${id}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(result => result.json())
+    .then(data => data)
+    .catch(err => err)
+}
+
 export const deleteBook = (id) => {
   const data = {
     id
@@ -49,6 +59,11 @@ export const deleteBook = (id) => {
     .then(result => result.json())
     .then(data => data)
     .catch(err => err)
+}
+
+export const updateBook = (data) => {
+  console.log(data)
+  /* Seguir aqui desarrollando la llamada a la API */
 }
 
 export const getAllReviews = (idBook) => {
@@ -100,4 +115,18 @@ export const updateReview = (id, valoration, textReview, idUser) => {
     .then(result => result.json())
     .then(data => data)
     .catch(err => err)
+}
+
+export const updateRating = () => {
+  // Recibir el rating actual, numero de reviews y nueva puntuación
+
+  // Sumar nueva puntuación al rating y dividir por el numero de reviews
+
+  // Llamar a la api con el nuevo Rating
+
+  // Si por un casual se eliminara una review, restamos esa puntuación
+  // y dividimos nuevamente por el nuevo numero de reviews
+
+  // Para saber si se añade review o se quita usaremos un boolean true o false
+  // como argumento en la función
 }
