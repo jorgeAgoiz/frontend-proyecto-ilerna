@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
-import { getSpecificBook, updateBook } from '../../services/apiCalls'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import useBookData from '../../hooks/useBookData'
+import { updateBook } from '../../services/apiCalls'
 import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './EditBookForm.css'
 
 const EditBookForm = () => {
   const { bookId } = useParams()
-  const [bookRev, setBookRev] = useState(null)
-  const history = useHistory()
-
-  useEffect(() => {
-    if (!bookRev) {
-      getSpecificBook(bookId)
-        .then(response => setBookRev(response.data))
-        .catch(err => console.log(err))
-    }
-  }, [bookRev, bookId])
+  const { history, bookDetails, setBooks, books } = useBookData(bookId)
+  const [error, setError] = useState(null)
 
   const onHandleCancel = (evt) => {
     evt.preventDefault()
@@ -30,9 +23,28 @@ const EditBookForm = () => {
       author: evt.target.author.value,
       category: evt.target.category.value,
       book_description: evt.target.book_description.value,
-      id: bookRev.id
+      id: bookDetails.id
     }
-    await updateBook(bookData)
+    const bookUpdated = await updateBook(bookData)
+    if (!bookUpdated.success) {
+      return setError(bookUpdated.message)
+    }
+    setError(null)
+    const booksArray = books.data.map(book => {
+      if (book.id === parseInt(bookId)) {
+        book.title = bookData.title
+        book.author = bookData.author
+        book.category = bookData.category
+        book.book_description = bookData.book_description
+      }
+      return book
+    })
+    const newBooks = {
+      ...books,
+      data: booksArray
+    }
+    setBooks(newBooks)
+    return history.push(`/book/${bookId}`)
   }
 
   const showEditForm = () => {
@@ -41,15 +53,15 @@ const EditBookForm = () => {
         <form className='edit-book-form' onSubmit={onHandleSubmit}>
           <div id='title-book'>
             <label>Titulo: </label>
-            <input type='text' name='title' defaultValue={bookRev.title} required />
+            <input type='text' name='title' defaultValue={bookDetails.title} required />
           </div>
           <div id='autor-book'>
             <label>Autor: </label>
-            <input type='text' name='author' defaultValue={bookRev.author} required />
+            <input type='text' name='author' defaultValue={bookDetails.author} required />
           </div>
           <div id='category-book'>
             <label>Categoría: </label>
-            <select name='category' defaultValue={bookRev.category} required>
+            <select name='category' defaultValue={bookDetails.category} required>
               <option value='biografia'>Biografía</option>
               <option value='cientifico'>Científico</option>
               <option value='ciencia ficción'>Ciencia ficción</option>
@@ -68,12 +80,13 @@ const EditBookForm = () => {
             <label>Descripción: </label>
             <textarea
               name='book_description'
-              defaultValue={bookRev.book_description}
+              defaultValue={bookDetails.book_description}
               maxLength='1200'
             />
           </div>
           <div id='submit-book'>
             <InputConfirm textValue='Guardar' nameClass='confirm-search-btn' />
+            {error ? (<p>{error}</p>) : null}
             <CancelBtn nameClass='cancel-generic-btn' text='Cancelar' onClickFunc={onHandleCancel} />
           </div>
         </form>
@@ -85,12 +98,10 @@ const EditBookForm = () => {
     <div className='edit-book'>
       <h1>Editar Libro</h1>
       {
-        bookRev ? showEditForm() : null
+        bookDetails ? showEditForm() : null
       }
     </div>
   )
 }
 
 export default EditBookForm
-
-/* Darle funcionalidades */

@@ -15,14 +15,16 @@ const useBookData = (bookId) => {
       const page = sessionStorage.getItem('page')
       const order = sessionStorage.getItem('order')
       const direction = sessionStorage.getItem('direction')
-      getAllBooks(page, order, direction).then(data => setBooks(data)).catch(err => {
-        console.log(err)/* Tenemos que manejar este error */
-        return history.push('/')
-      })
+      getAllBooks(page, order, direction)
+        .then(data => setBooks(data))
+        .catch(err => {
+          console.log(err)/* Tenemos que manejar este error */
+          return history.push('/')
+        })
     }
   }, [books, bookId, setBooks, history])
 
-  return { history, bookDetails }
+  return { history, bookDetails, setBooks, books }
 }
 
 export default useBookData
