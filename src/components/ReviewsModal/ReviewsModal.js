@@ -59,6 +59,9 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
         <img onClick={onClose} src='../cancel.png' alt='exit-icon' width='30px' height='30px' />
       </div>
       <h1>Reseñas</h1>
+      <div>
+        <button onClick={() => console.log('añadir reseña')}>Añadir Reseña</button>
+      </div>
       {
         !error
           ? null
@@ -78,3 +81,5 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
 }
 
 export default ReviewsModal
+
+/* Darle funcionalidad a añadir reseña y actualizar los rating */
