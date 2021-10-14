@@ -4,10 +4,13 @@ import { AuthContext } from '../../context/AuthContext'
 import { getAllReviews } from '../../services/apiCalls'
 import EditDelBtns from '../EditDelBtns/EditDelBtns'
 import './ReviewsModal.css'
+import GenericBtn from '../GenericBtn/GenericBtn'
+import AddReviewForm from '../AddReviewForm/AddReviewForm'
 
 const ReviewsModal = ({ onClose, bookInfo }) => {
   const [reviews, setReviews] = useState([])
   const [error, setError] = useState(null)
+  const [viewForm, setViewForm] = useState(false)
   const { userLog } = useContext(AuthContext)
 
   useEffect(() => {
@@ -20,7 +23,11 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
         setError(err.message)
         return console.log(err)
       })
-  }, [bookInfo])
+  }, [bookInfo, error])
+
+  const onHandleFormView = () => {
+    return setViewForm(true)
+  }
 
   const showReviews = () => {
     return reviews.map(rev => {
@@ -58,10 +65,17 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
       <div id='reviews-close'>
         <img onClick={onClose} src='../cancel.png' alt='exit-icon' width='30px' height='30px' />
       </div>
-      <h1>Reseñas</h1>
-      <div>
-        <button onClick={() => console.log('añadir reseña')}>Añadir Reseña</button>
-      </div>
+
+      {
+        !viewForm
+          ? (
+            <>
+              <h1>Reseñas</h1>
+              <GenericBtn onClickFunc={onHandleFormView} text='Añadir Reseña' />
+            </>
+            )
+          : null
+      }
       {
         !error
           ? null
@@ -73,8 +87,8 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
       }
       {
         reviews
-          ? showReviews()
-          : null
+          ? (!viewForm ? showReviews() : <AddReviewForm />)
+          : (!viewForm ? null : <AddReviewForm />)
       }
     </div>, document.getElementById('modal')
   )

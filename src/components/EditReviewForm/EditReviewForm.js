@@ -77,5 +77,3 @@ const EditReviewForm = () => {
 }
 
 export default EditReviewForm
-
-/* Tenemos que añadir un boton cancelar para hacerlo mas accesible */
