@@ -1,0 +1,56 @@
+.add-review-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  height: 100%;
+  padding: 0.2rem;
+}
+#form-add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+#review-textarea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+#review-textarea label {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  font-family: "Roboto Mono", monospace;
+}
+
+#review-valoration {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: center;
+}
+#review-valoration label {
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  font-family: "Roboto Mono", monospace;
+}
+#review-valoration #select-valoration {
+  font-size: 1.2rem;
+}
+#add-review-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
