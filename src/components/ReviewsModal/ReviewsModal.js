@@ -29,6 +29,10 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
     return setViewForm(true)
   }
 
+  const onClickCancel = () => {
+    return setViewForm(false)
+  }
+
   const showReviews = () => {
     return reviews.map(rev => {
       return (
@@ -71,7 +75,7 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
           ? (
             <>
               <h1>Reseñas</h1>
-              <GenericBtn onClickFunc={onHandleFormView} text='Añadir Reseña' />
+              <GenericBtn onClickFunc={onHandleFormView} text='Añadir Reseña' nameClass='add-review-btn' />
             </>
             )
           : null
@@ -87,8 +91,8 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
       }
       {
         reviews
-          ? (!viewForm ? showReviews() : <AddReviewForm />)
-          : (!viewForm ? null : <AddReviewForm />)
+          ? (!viewForm ? showReviews() : <AddReviewForm onClickCancel={onClickCancel} onClose={onClose} bookInfo={bookInfo} />)
+          : (!viewForm ? null : <AddReviewForm onClickCancel={onClickCancel} onClose={onClose} bookInfo={bookInfo} />)
       }
     </div>, document.getElementById('modal')
   )
@@ -96,4 +100,8 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
 
 export default ReviewsModal
 
-/* Darle funcionalidad a añadir reseña y actualizar los rating */
+/*
+********************************
+Actualizar los rating con cada accion
+********************************
+*/

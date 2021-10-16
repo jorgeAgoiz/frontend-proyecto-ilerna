@@ -1,19 +1,47 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './AddReviewForm.css'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import CancelBtn from '../CancelBtn/CancelBtn'
+import { AuthContext } from '../../context/AuthContext'
+import { addReview } from '../../services/apiCalls'
 
-const AddReviewForm = () => {
+const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
+  const { userLog } = useContext(AuthContext)
+  const [error, setError] = useState(null)
+
+  const onHandleSubmit = async (evt) => {
+    evt.preventDefault()
+    const idBook = bookInfo.id
+    const idUser = userLog.id
+    const textReview = evt.target.text_review.value
+    const valoration = evt.target.valoration.value
+    const data = {
+      valoration,
+      text_review: textReview,
+      id_user: idUser,
+      id_book: idBook
+    }
+
+    const newReview = await addReview(data)
+    if (!newReview.success) {
+      return setError(newReview.message)
+    }
+    setError(null)
+    return onClose()
+  }
+
   return (
     <div className='add-review-form'>
       <h1>Añade tu reseña: </h1>
-      <form id='form-add'>
+      {error ? (<p>{error}</p>) : null}
+      <form id='form-add' onSubmit={onHandleSubmit}>
         <div id='review-textarea'>
           <label>Detalles de tu experiencia: </label>
           <textarea
             id='text_review'
             name='text_review'
             maxLength='1200'
+            required
           />
         </div>
         <div id='review-valoration'>
@@ -29,7 +57,7 @@ const AddReviewForm = () => {
         </div>
         <div id='add-review-btn'>
           <InputConfirm textValue='Guardar' nameClass='confirm-search-btn' />
-          <CancelBtn text='Cancelar' nameClass='cancel-generic-btn' onClickFunc={() => console.log('a tope')} />
+          <CancelBtn text='Cancelar' nameClass='cancel-generic-btn' onClickFunc={onClickCancel} />
         </div>
       </form>
     </div>
@@ -37,7 +65,3 @@ const AddReviewForm = () => {
 }
 
 export default AddReviewForm
-
-/*
-    Tengo que estilar esto y darle funcionalidad
-*/

@@ -123,6 +123,17 @@ export const updateReview = (id, valoration, textReview, idUser) => {
     .catch(err => err)
 }
 
+export const addReview = (data) => {
+  return fetch('http://localhost:3012/review', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(result => result.json())
+    .then(data => data)
+    .catch(err => err)
+}
+
 export const updateRating = () => {
   // Recibir el rating actual, numero de reviews y nueva puntuación
 
