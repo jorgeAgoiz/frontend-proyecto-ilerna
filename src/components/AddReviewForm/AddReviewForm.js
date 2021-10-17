@@ -33,7 +33,7 @@ const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
   return (
     <div className='add-review-form'>
       <h1>Añade tu reseña: </h1>
-      {error ? (<p>{error}</p>) : null}
+      {error ? (<p>{error}</p>) : null}{/* Estilar error */}
       <form id='form-add' onSubmit={onHandleSubmit}>
         <div id='review-textarea'>
           <label>Detalles de tu experiencia: </label>
@@ -65,3 +65,5 @@ const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
 }
 
 export default AddReviewForm
+
+/* Estilar errores  */

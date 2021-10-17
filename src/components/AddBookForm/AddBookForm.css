@@ -1,0 +1,8 @@
+.main-add-book {
+  grid-column: 1 / 6;
+  grid-row: 2 / 8;
+  background-color: rgb(255, 255, 255, 0.6);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}

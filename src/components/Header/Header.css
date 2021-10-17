@@ -16,7 +16,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   padding: 0.4rem;
 }
 .title-logo h1 {
@@ -29,6 +28,32 @@
   margin: 0.4rem;
 }
 /* Título y Logo de la App */
+
+/* Botón añadir libro COMIENZO */
+
+.add-book-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.4rem;
+  height: 100%;
+  gap: 0.6rem;
+}
+.add-book-btn a {
+  padding: 0.2rem;
+}
+.add-book-btn a img:hover {
+  width: 58px;
+  height: 58px;
+}
+.add-book-btn h2 {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-family: "Roboto Mono", monospace;
+  letter-spacing: 1px;
+}
+/* Botón añadir libro FIN */
 
 /* Botones del Header */
 .session-btns {

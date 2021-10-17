@@ -28,10 +28,19 @@ const Header = () => {
       )
     } else {
       return (
-        <div className='session-btns'>
-          <Link className='signup' to='/my_activity'>Mi Actividad</Link>
-          <button className='signin' onClick={onHandleSignOut}>Cerrar Sesión</button>
-        </div>
+        <>
+          <div className='add-book-btn'>
+            <Link to='/add-book'>
+              <img src='./plus.png' height='55px' width='55px' title='Añadir Libro' alt='add-book-icon' />
+            </Link>
+            <h2>Añadir Libro</h2>
+          </div>
+          <div className='session-btns'>
+            <Link className='signup' to='/my_activity'>Mi Actividad</Link>
+            <button className='signin' onClick={onHandleSignOut}>Cerrar Sesión</button>
+          </div>
+        </>
+
       )
     }
   }
