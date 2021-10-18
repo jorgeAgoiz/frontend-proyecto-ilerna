@@ -50,7 +50,6 @@ export const deleteBook = (id) => {
   const data = {
     id
   }
-
   return fetch('http://localhost:3012/books', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
@@ -64,6 +63,17 @@ export const deleteBook = (id) => {
 export const updateBook = (data) => {
   return fetch('http://localhost:3012/books', {
     method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(result => result.json())
+    .then(data => data)
+    .catch(err => err)
+}
+
+export const createNewBook = (data) => {
+  return fetch('http://localhost:3012/books', {
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })

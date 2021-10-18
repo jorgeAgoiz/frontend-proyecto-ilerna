@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
 import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './AddBookForm.css'
 
 const AddBookForm = () => {
+  const { userLog } = useContext(AuthContext)
+
   const onHandleCancel = (evt) => {
     evt.preventDefault()
-    console.log('Hey There!!')
   }
 
   const onHandleSubmit = (evt) => {
     evt.preventDefault()
-    console.log('Enviando datos...')
-    console.log(evt.target.category.value)
+    const newBook = {
+      title: evt.target.title.value,
+      author: evt.target.author.value,
+      category: evt.target.category.value,
+      book_description: evt.target.book_description.value,
+      rating: evt.target.rating.value,
+      id_user: userLog.id
+    }
+    console.log(newBook)
+    /* Aqui añadiremos la llamada a la API */
   }
 
   return (
@@ -45,8 +55,8 @@ const AddBookForm = () => {
           </select>
         </div>
         <div id='valoration-div'>
-          <label htmlFor='valoration'>Valoración: </label>
-          <select name='valoration' id='valoration' required>
+          <label htmlFor='rating'>Valoración: </label>
+          <select name='rating' id='rating' required>
             <option value='0'>0</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
