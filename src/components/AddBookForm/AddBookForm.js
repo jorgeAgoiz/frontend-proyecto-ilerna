@@ -1,13 +1,26 @@
 import React from 'react'
+import CancelBtn from '../CancelBtn/CancelBtn'
+import InputConfirm from '../InputConfirm/InputConfirm'
 import './AddBookForm.css'
 
 const AddBookForm = () => {
+  const onHandleCancel = (evt) => {
+    evt.preventDefault()
+    console.log('Hey There!!')
+  }
+
+  const onHandleSubmit = (evt) => {
+    evt.preventDefault()
+    console.log('Enviando datos...')
+    console.log(evt.target.category.value)
+  }
+
   return (
     <div className='main-add-book'>
       <h1>Añade un nuevo libro a la comunidad</h1>
-      <form className='add-book-form'>
+      <form className='add-book-form' onSubmit={onHandleSubmit}>
         <div id='title-div'>
-          <label htmlFor='title'>Titulo: </label>
+          <label htmlFor='title'>Título: </label>
           <input type='text' name='title' id='title' />
         </div>
         <div id='author-div'>
@@ -51,10 +64,10 @@ const AddBookForm = () => {
           />
         </div>
         <div id='input-confirm-div'>
-          <input type='submit' value='Enviar' />
+          <InputConfirm textValue='Guardar' nameClass='confirm-search-btn' />
         </div>
-        <div id='button-cancel-div'>
-          <button>Cancelar</button>
+        <div id='link-cancel-div'>
+          <CancelBtn nameClass='cancel-generic-btn' text='Cancelar' onClickFunc={onHandleCancel} />
         </div>
       </form>
     </div>
@@ -63,5 +76,4 @@ const AddBookForm = () => {
 
 export default AddBookForm
 
-/* Estilar el formulario de añadir libro y darle funcionalidades,
-siguientes pasos. */
+/* Estilo aplicado, ahora necesitamos darle funcionalidad */
