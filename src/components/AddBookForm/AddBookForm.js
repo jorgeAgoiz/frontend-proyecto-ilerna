@@ -1,17 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
+import { createNewBook } from '../../services/apiCalls'
 import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './AddBookForm.css'
 
 const AddBookForm = () => {
   const { userLog } = useContext(AuthContext)
+  const [error, setError] = useState(null)
+  const history = useHistory()
 
   const onHandleCancel = (evt) => {
     evt.preventDefault()
+    return history.push('/')
   }
 
-  const onHandleSubmit = (evt) => {
+  const onHandleSubmit = async (evt) => {
     evt.preventDefault()
     const newBook = {
       title: evt.target.title.value,
@@ -21,21 +26,28 @@ const AddBookForm = () => {
       rating: evt.target.rating.value,
       id_user: userLog.id
     }
-    console.log(newBook)
-    /* Aqui añadiremos la llamada a la API */
+    const newBookAdded = await createNewBook(newBook)
+    if (!newBookAdded.success) {
+      return setError(newBookAdded.message)
+    }
+
+    return history.push('/')
   }
 
   return (
     <div className='main-add-book'>
       <h1>Añade un nuevo libro a la comunidad</h1>
+      {
+        error ? <h2>{error}</h2> : null/* Estilar este error */
+      }
       <form className='add-book-form' onSubmit={onHandleSubmit}>
         <div id='title-div'>
           <label htmlFor='title'>Título: </label>
-          <input type='text' name='title' id='title' />
+          <input type='text' name='title' id='title' required />
         </div>
         <div id='author-div'>
           <label htmlFor='author'>Autor: </label>
-          <input type='text' name='author' id='author' />
+          <input type='text' name='author' id='author' required />
         </div>
         <div id='category-div'>
           <label htmlFor='category'>Categoría: </label>
@@ -85,5 +97,3 @@ const AddBookForm = () => {
 }
 
 export default AddBookForm
-
-/* Estilo aplicado, ahora necesitamos darle funcionalidad */
