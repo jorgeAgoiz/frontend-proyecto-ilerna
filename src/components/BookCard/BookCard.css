@@ -151,8 +151,16 @@
   grid-row: 6 / 7;
   grid-column: 2 / 3;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.3rem;
+}
+.book-edit p {
+  color: black;
+  font-weight: bold;
+  font-size: 0.8rem;
+  font-family: "Roboto Mono", monospace;
 }
 .book-edit button {
   border: none;
@@ -166,8 +174,16 @@
   grid-row: 6 / 7;
   grid-column: 4 / 5;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.3rem;
+}
+.book-delete p {
+  color: black;
+  font-weight: bold;
+  font-size: 0.8rem;
+  font-family: "Roboto Mono", monospace;
 }
 .book-delete button {
   border: none;
@@ -176,4 +192,3 @@
 .book-delete button:hover {
   cursor: pointer;
 }
-

@@ -8,8 +8,6 @@ import './SearchList.css'
 const SearchList = () => {
   const { books, setBooks } = useContext(BooksContext)
   const [page, setPage] = useState(1)
-  /* Esto para la busqueda por titulo */
-  /* const [byTitle, setByTitle] = useState(false) */
   const [order, setOrder] = useState('title')
   const [direction, setDirection] = useState('ASC')
   const [newRequest, setNewRequest] = useState(false)
@@ -36,12 +34,6 @@ const SearchList = () => {
     }
   }
 
-  const filterATitle = () => {
-    console.log('Buscando por título!!')
-    /* Para darle funcionalidad a la busqueda por titulo debemos modificar el backend,
-    añadiendo un nuevo controlador */
-  }
-
   const changingQuery = (newOrder, newDirection) => {
     setOrder(newOrder)
     setDirection(newDirection)
@@ -53,7 +45,7 @@ const SearchList = () => {
       <div className='main-title'>
         <h1>Libros de la comunidad</h1>
       </div>
-      <SearchBar filterATitle={filterATitle} />
+      <SearchBar />
       {
       books.success
         ? <ListBooks

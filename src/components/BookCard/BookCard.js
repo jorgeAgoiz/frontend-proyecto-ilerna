@@ -73,11 +73,13 @@ const BookCard = () => {
             ? (
               <>
                 <div className='book-edit'>
+                  <p>Editar Libro</p>
                   <button onClick={onHandleEditBook}>
                     <img src='../editing.png' alt='edit-icon' width='50px' height='50px' />
                   </button>
                 </div>
                 <div className='book-delete'>
+                  <p>Eliminar Libro</p>
                   <button onClick={onHandleDeleteBook}>
                     <img src='../bin.png' alt='delete-icon' width='50px' height='50px' />
                   </button>
