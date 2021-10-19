@@ -31,7 +31,7 @@ const Header = () => {
         <>
           <div className='add-book-btn'>
             <Link to='/add-book'>
-              <img src='./plus.png' height='55px' width='55px' title='Añadir Libro' alt='add-book-icon' />
+              <img src='../plus.png' height='55px' width='55px' title='Añadir Libro' alt='add-book-icon' />
             </Link>
             <h2>Añadir Libro</h2>
           </div>
@@ -50,7 +50,7 @@ const Header = () => {
       <div className='title-logo'>
         <h1>Community Readers</h1>
         <Link to='/'>
-          <img src='icons8.png' alt='book-icon' height='45px' width='45px' />
+          <img src='../icons8.png' alt='book-icon' height='45px' width='45px' />
         </Link>
       </div>
       {

@@ -1,22 +1,36 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './AddReviewForm.css'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import CancelBtn from '../CancelBtn/CancelBtn'
 import { AuthContext } from '../../context/AuthContext'
-import { addReview } from '../../services/apiCalls'
+import { addReview, getAllReviews, updateBook } from '../../services/apiCalls'
+import { calculateAverage } from '../../utils/calculateAverage'
 
 const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
   const { userLog } = useContext(AuthContext)
   const [error, setError] = useState(null)
+
+  /* Esto puede ser un custom hook */
+  const [valReviews, setValReviews] = useState([])
+
+  useEffect(() => {
+    getAllReviews(bookInfo.id)
+      .then(response => setValReviews(response.data.map(book => book.valoration)))
+      .catch(err => err)
+  }, [bookInfo])
+  /* Esto puede ser un custom hook */
 
   const onHandleSubmit = async (evt) => {
     evt.preventDefault()
     const idBook = bookInfo.id
     const idUser = userLog.id
     const textReview = evt.target.text_review.value
-    const valoration = evt.target.valoration.value
+    const rating = evt.target.valoration.value
+    const valorations = [...valReviews, parseInt(rating)]
+
+    const newRating = calculateAverage(valorations)
     const data = {
-      valoration,
+      valoration: rating,
       text_review: textReview,
       id_user: idUser,
       id_book: idBook
@@ -27,6 +41,10 @@ const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
       return setError(newReview.message)
     }
     setError(null)
+    const ratingUpdated = await updateBook({ rating: newRating, id: idBook })
+    if (!ratingUpdated.success) {
+      return setError(ratingUpdated.message)
+    }
     return onClose()
   }
 

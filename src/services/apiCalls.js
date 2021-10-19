@@ -121,7 +121,8 @@ export const getSpecificReview = (idReview) => {
   return fetch(`http://localhost:3012/review/${idReview}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
-  }).then(result => result.json())
+  })
+    .then(result => result.json())
     .then(data => data)
     .catch(err => err)
 }
