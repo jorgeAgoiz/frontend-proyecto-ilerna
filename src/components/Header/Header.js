@@ -40,7 +40,6 @@ const Header = () => {
             <button className='signin' onClick={onHandleSignOut}>Cerrar Sesión</button>
           </div>
         </>
-
       )
     }
   }

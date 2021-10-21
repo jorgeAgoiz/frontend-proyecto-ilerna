@@ -61,7 +61,3 @@ const ListBooks = ({ allBooks, nextPage, previousPage, changingQuery }) => {
 }
 
 export default ListBooks
-
-/* Aqui ya empezaremos a mostrar el listado de libros,
-necesitamos estilar bien la tabla y mostrar las paginas debajo. Tambien
-necesitamos darle funcionalidad a SearchBar */

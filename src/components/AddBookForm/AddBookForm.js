@@ -30,7 +30,6 @@ const AddBookForm = () => {
     if (!newBookAdded.success) {
       return setError(newBookAdded.message)
     }
-
     return history.push('/')
   }
 
@@ -38,7 +37,7 @@ const AddBookForm = () => {
     <div className='main-add-book'>
       <h1>Añade un nuevo libro a la comunidad</h1>
       {
-        error ? <h2>{error}</h2> : null/* Estilar este error */
+        error ? <h2 className='error-msg'>{error}</h2> : null
       }
       <form className='add-book-form' onSubmit={onHandleSubmit}>
         <div id='title-div'>

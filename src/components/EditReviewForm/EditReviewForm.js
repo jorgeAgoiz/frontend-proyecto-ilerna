@@ -54,7 +54,7 @@ const EditReviewForm = () => {
   return (
     <div className='edit-review'>
       <h1>Editar Reseña</h1>
-      {error ? <p>{error}</p> : null}{/* Estilar este error */}
+      {error ? <p className='error-msg-p'>{error}</p> : null}{/* Estilar este error */}
       <form onSubmit={onHandleSubmit}>
         <label htmlFor='text-review'>Reseña: </label>
         <textarea

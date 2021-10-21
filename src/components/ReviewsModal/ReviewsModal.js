@@ -13,6 +13,7 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
   const [viewForm, setViewForm] = useState(false)
   const { userLog } = useContext(AuthContext)
 
+  /* Custom Hook tal vez */
   useEffect(() => {
     getAllReviews(bookInfo.id)
       .then(result => {
@@ -24,6 +25,7 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
         return console.log(err)
       })
   }, [bookInfo, error])
+  /* Custom Hook tal vez */
 
   const onHandleFormView = () => {
     return setViewForm(true)
@@ -99,9 +101,3 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
 }
 
 export default ReviewsModal
-
-/*
-********************************
-Actualizar los rating con cada accion
-********************************
-*/

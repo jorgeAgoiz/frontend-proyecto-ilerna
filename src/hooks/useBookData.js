@@ -28,3 +28,5 @@ const useBookData = (bookId) => {
 }
 
 export default useBookData
+
+/*  Aqui podriamos implementar el contexto del libro seleccionado y prescindir del estado del componente */

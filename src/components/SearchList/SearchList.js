@@ -12,6 +12,7 @@ const SearchList = () => {
   const [direction, setDirection] = useState('ASC')
   const [newRequest, setNewRequest] = useState(false)
 
+  /* Podria ser un custom hook tal vez */
   useEffect(() => {
     const currentPage = parseInt(books.page)
     if (!books.success || currentPage !== page || newRequest) {
@@ -22,6 +23,7 @@ const SearchList = () => {
       return setNewRequest(false)
     }
   }, [books, setBooks, page, newRequest])
+  /* Podria ser un custom hook tal vez */
 
   const nextPage = () => {
     if (page < books.number_pages) {
@@ -62,5 +64,3 @@ const SearchList = () => {
 }
 
 export default SearchList
-
-/* Siguiente paso darle utilidad a la searchBar y liarnos con las fichas de los libros */

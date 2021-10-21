@@ -60,7 +60,7 @@ const BookCard = () => {
           <p>{addDate}</p>
         </div>
         <div className='book-description'>
-          {error ? (<p>{error}</p>) : null}{/* Estilar este error */}
+          {error ? (<p className='error-msg-p'>{error}</p>) : null}{/* Estilar este error */}
           <h2>Descripción:</h2>
           <p>{bookDetails.book_description}</p>
         </div>
@@ -88,7 +88,6 @@ const BookCard = () => {
               )
             : null
         }
-
       </>
     )
   }

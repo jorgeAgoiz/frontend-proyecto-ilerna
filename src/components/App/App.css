@@ -34,3 +34,19 @@ body {
   text-align: center;
   color: white;
 }
+
+.error-msg {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: rgb(202, 2, 2);
+}
+
+.error-msg-p {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: rgb(202, 2, 2);
+}

@@ -1,24 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './AddReviewForm.css'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import CancelBtn from '../CancelBtn/CancelBtn'
 import { AuthContext } from '../../context/AuthContext'
-import { addReview, getAllReviews, updateBook } from '../../services/apiCalls'
+import { addReview, updateBook } from '../../services/apiCalls'
 import { calculateAverage } from '../../utils/calculateAverage'
+import useValorations from '../../hooks/useValorations'
 
 const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
   const { userLog } = useContext(AuthContext)
   const [error, setError] = useState(null)
-
-  /* Esto puede ser un custom hook */
-  const [valReviews, setValReviews] = useState([])
-
-  useEffect(() => {
-    getAllReviews(bookInfo.id)
-      .then(response => setValReviews(response.data.map(book => book.valoration)))
-      .catch(err => err)
-  }, [bookInfo])
-  /* Esto puede ser un custom hook */
+  const { valReviews } = useValorations(bookInfo)
 
   const onHandleSubmit = async (evt) => {
     evt.preventDefault()
@@ -51,7 +43,7 @@ const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
   return (
     <div className='add-review-form'>
       <h1>Añade tu reseña: </h1>
-      {error ? (<p>{error}</p>) : null}{/* Estilar error */}
+      {error ? (<p className='error-msg-p'>{error}</p>) : null}
       <form id='form-add' onSubmit={onHandleSubmit}>
         <div id='review-textarea'>
           <label>Detalles de tu experiencia: </label>
@@ -83,5 +75,3 @@ const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
 }
 
 export default AddReviewForm
-
-/* Estilar errores  */

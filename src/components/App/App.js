@@ -12,6 +12,7 @@ import BookCard from '../BookCard/BookCard'
 import EditReviewForm from '../EditReviewForm/EditReviewForm'
 import EditBookForm from '../EditBookForm/EditBookForm'
 import AddBookForm from '../AddBookForm/AddBookForm'
+import { SelectedBookContextProvider } from '../../context/SelectedBookContext'
 
 const App = () => {
   const { userLog } = useContext(AuthContext)
@@ -22,13 +23,15 @@ const App = () => {
         <BooksContextProvider>
           <Header />
           <Switch>
-            <Route path='/' exact component={!userLog.logged ? MainCover : SearchList} />
-            <Route path='/signup' exact component={Signup} />
-            <Route path='/signin' exact component={Signin} />
-            <Route path='/edit-review/:reviewId' exact component={!userLog.logged ? MainCover : EditReviewForm} />
-            <Route path='/book/:bookId' exact component={!userLog.logged ? MainCover : BookCard} />
-            <Route path='/edit-book/:bookId' exact component={!userLog.logged ? MainCover : EditBookForm} />
-            <Route path='/add-book' exact component={!userLog.logged ? MainCover : AddBookForm} />
+            <SelectedBookContextProvider>
+              <Route path='/' exact component={!userLog.logged ? MainCover : SearchList} />
+              <Route path='/signup' exact component={Signup} />
+              <Route path='/signin' exact component={Signin} />
+              <Route path='/edit-review/:reviewId' exact component={!userLog.logged ? MainCover : EditReviewForm} />
+              <Route path='/book/:bookId' exact component={!userLog.logged ? MainCover : BookCard} />
+              <Route path='/edit-book/:bookId' exact component={!userLog.logged ? MainCover : EditBookForm} />
+              <Route path='/add-book' exact component={!userLog.logged ? MainCover : AddBookForm} />
+            </SelectedBookContextProvider>
           </Switch>
         </BooksContextProvider>
       </div>
