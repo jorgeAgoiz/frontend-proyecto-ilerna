@@ -8,7 +8,7 @@ import './EditBookForm.css'
 
 const EditBookForm = () => {
   const { bookId } = useParams()
-  const { history, bookDetails, setBooks, books } = useBookData(bookId)
+  const { history, bookInfo, setBooks, books } = useBookData(bookId)
   const [error, setError] = useState(null)
 
   const onHandleCancel = (evt) => {
@@ -23,7 +23,7 @@ const EditBookForm = () => {
       author: evt.target.author.value,
       category: evt.target.category.value,
       book_description: evt.target.book_description.value,
-      id: bookDetails.id
+      id: bookInfo.book.id
     }
     const bookUpdated = await updateBook(bookData)
     if (!bookUpdated.success) {
@@ -53,15 +53,15 @@ const EditBookForm = () => {
         <form className='edit-book-form' onSubmit={onHandleSubmit}>
           <div id='title-book'>
             <label>Titulo: </label>
-            <input type='text' name='title' defaultValue={bookDetails.title} required />
+            <input type='text' name='title' defaultValue={bookInfo.book.title} required />
           </div>
           <div id='autor-book'>
             <label>Autor: </label>
-            <input type='text' name='author' defaultValue={bookDetails.author} required />
+            <input type='text' name='author' defaultValue={bookInfo.book.author} required />
           </div>
           <div id='category-book'>
             <label>Categoría: </label>
-            <select name='category' defaultValue={bookDetails.category} required>
+            <select name='category' defaultValue={bookInfo.book.category} required>
               <option value='biografia'>Biografía</option>
               <option value='cientifico'>Científico</option>
               <option value='ciencia ficción'>Ciencia ficción</option>
@@ -80,7 +80,7 @@ const EditBookForm = () => {
             <label>Descripción: </label>
             <textarea
               name='book_description'
-              defaultValue={bookDetails.book_description}
+              defaultValue={bookInfo.book.book_description}
               maxLength='1200'
             />
           </div>
@@ -98,7 +98,7 @@ const EditBookForm = () => {
     <div className='edit-book'>
       <h1>Editar Libro</h1>
       {
-        bookDetails ? showEditForm() : null
+        bookInfo.selected ? showEditForm() : null
       }
     </div>
   )

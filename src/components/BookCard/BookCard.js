@@ -9,7 +9,7 @@ import { deleteBook } from '../../services/apiCalls'
 const BookCard = () => {
   const { bookId } = useParams()
   const { userLog } = useContext(AuthContext)
-  const { history, bookDetails } = useBookData(bookId)
+  const { history, bookInfo } = useBookData(bookId)
   const [modal, setModal] = useState(false)
   const [error, setError] = useState(null)
 
@@ -22,7 +22,7 @@ const BookCard = () => {
 
   const onHandleDeleteBook = async (evt) => {
     evt.preventDefault()
-    const deletedBook = await deleteBook(bookDetails.id)
+    const deletedBook = await deleteBook(bookInfo.book.book.id)
     if (!deletedBook.success) {
       return setError(deletedBook.message)
     }
@@ -30,29 +30,29 @@ const BookCard = () => {
   }
 
   const onHandleEditBook = () => {
-    return history.push(`/edit-book/${bookDetails.id}`)
+    return history.push(`/edit-book/${bookInfo.book.id}`)
   }
 
   const showBookDetail = () => {
-    const addDate = new Date(bookDetails.created_at).toLocaleDateString()
+    const addDate = new Date(bookInfo.book.created_at).toLocaleDateString()
     return (
       <>
         <div className='book-title'>
-          <h1>{bookDetails.title}</h1>
+          <h1>{bookInfo.book.title}</h1>
         </div>
         <div className='book-author'>
           <h2>Autor:</h2>
-          <p>{bookDetails.author}</p>
+          <p>{bookInfo.book.author}</p>
         </div>
         <div className='book-category'>
           <h2>Categoría:</h2>
-          <p>{bookDetails.category}</p>
+          <p>{bookInfo.book.category}</p>
         </div>
         <div className='book-rating'>
           <h2>Valoración global:</h2>
           <div id='rating-data'>
             <img src='../valoration.png' alt='val-icon' width='40px' height='40px' />
-            <p>{bookDetails.rating}</p>
+            <p>{bookInfo.book.rating}</p>
           </div>
         </div>
         <div className='book-created-at'>
@@ -62,14 +62,14 @@ const BookCard = () => {
         <div className='book-description'>
           {error ? (<p className='error-msg-p'>{error}</p>) : null}{/* Estilar este error */}
           <h2>Descripción:</h2>
-          <p>{bookDetails.book_description}</p>
+          <p>{bookInfo.book.book_description}</p>
         </div>
         <div className='book-reviews'>
-          {modal ? <ReviewsModal onClose={hideReviewsModal} bookInfo={bookDetails} /> : null}
+          {modal ? <ReviewsModal onClose={hideReviewsModal} bookInfo={bookInfo.book} /> : null}
           <button onClick={showReviewsModal}>Ver Reseñas</button>
         </div>
         {
-          bookDetails.id_user === userLog.id
+          bookInfo.book.id_user === userLog.id
             ? (
               <>
                 <div className='book-edit'>
@@ -95,7 +95,7 @@ const BookCard = () => {
   return (
     <div className='book-card-main'>
       {
-          bookDetails
+          bookInfo.selected
             ? showBookDetail()
             : null
       }

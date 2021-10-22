@@ -6,9 +6,11 @@ import { AuthContext } from '../../context/AuthContext'
 import { addReview, updateBook } from '../../services/apiCalls'
 import { calculateAverage } from '../../utils/calculateAverage'
 import useValorations from '../../hooks/useValorations'
+/* import { SelectedBookContext } from '../../context/SelectedBookContext' */
 
 const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
   const { userLog } = useContext(AuthContext)
+  /* const { bookInfo, setBookInfo } = useContext(SelectedBookContext) */
   const [error, setError] = useState(null)
   const { valReviews } = useValorations(bookInfo)
 
@@ -75,3 +77,7 @@ const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
 }
 
 export default AddReviewForm
+
+/* Necesitamos hacer cambios aqui mismo
+  No sería necesario pasarle por prop la bookInfo porque tenemos un contexto global
+*/
