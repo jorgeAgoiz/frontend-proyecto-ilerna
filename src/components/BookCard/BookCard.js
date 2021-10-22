@@ -65,7 +65,7 @@ const BookCard = () => {
           <p>{bookInfo.book.book_description}</p>
         </div>
         <div className='book-reviews'>
-          {modal ? <ReviewsModal onClose={hideReviewsModal} bookInfo={bookInfo.book} /> : null}
+          {modal ? <ReviewsModal onClose={hideReviewsModal} /> : null}
           <button onClick={showReviewsModal}>Ver Reseñas</button>
         </div>
         {
@@ -104,5 +104,3 @@ const BookCard = () => {
 }
 
 export default BookCard
-
-/* Gran limpieza de codigo y diseccionar en componentes mas pequeños */

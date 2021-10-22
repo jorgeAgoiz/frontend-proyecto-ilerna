@@ -5,7 +5,7 @@ const useValorations = (bookInfo) => {
   const [valReviews, setValReviews] = useState([])
 
   useEffect(() => {
-    getAllReviews(bookInfo.id)
+    getAllReviews(bookInfo.book.id)
       .then(response => {
         setValReviews(response.data.map(book => book.valoration))
       })

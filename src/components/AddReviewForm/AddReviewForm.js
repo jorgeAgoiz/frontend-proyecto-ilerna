@@ -6,17 +6,17 @@ import { AuthContext } from '../../context/AuthContext'
 import { addReview, updateBook } from '../../services/apiCalls'
 import { calculateAverage } from '../../utils/calculateAverage'
 import useValorations from '../../hooks/useValorations'
-/* import { SelectedBookContext } from '../../context/SelectedBookContext' */
+import { SelectedBookContext } from '../../context/SelectedBookContext'
 
-const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
+const AddReviewForm = ({ onClickCancel, onClose }) => {
   const { userLog } = useContext(AuthContext)
-  /* const { bookInfo, setBookInfo } = useContext(SelectedBookContext) */
+  const { bookInfo, setBookInfo } = useContext(SelectedBookContext)
   const [error, setError] = useState(null)
   const { valReviews } = useValorations(bookInfo)
 
   const onHandleSubmit = async (evt) => {
     evt.preventDefault()
-    const idBook = bookInfo.id
+    const idBook = bookInfo.book.id
     const idUser = userLog.id
     const textReview = evt.target.text_review.value
     const rating = evt.target.valoration.value
@@ -39,6 +39,11 @@ const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
     if (!ratingUpdated.success) {
       return setError(ratingUpdated.message)
     }
+    const bookUpd = {
+      ...bookInfo.book,
+      rating: newRating
+    }
+    setBookInfo({ selected: true, book: bookUpd })
     return onClose()
   }
 
@@ -77,7 +82,3 @@ const AddReviewForm = ({ onClickCancel, bookInfo, onClose }) => {
 }
 
 export default AddReviewForm
-
-/* Necesitamos hacer cambios aqui mismo
-  No sería necesario pasarle por prop la bookInfo porque tenemos un contexto global
-*/

@@ -6,19 +6,20 @@ import EditDelBtns from '../EditDelBtns/EditDelBtns'
 import './ReviewsModal.css'
 import GenericBtn from '../GenericBtn/GenericBtn'
 import AddReviewForm from '../AddReviewForm/AddReviewForm'
+import { SelectedBookContext } from '../../context/SelectedBookContext'
 
-const ReviewsModal = ({ onClose, bookInfo }) => {
+const ReviewsModal = ({ onClose }) => {
   const [reviews, setReviews] = useState([])
   const [error, setError] = useState(null)
   const [viewForm, setViewForm] = useState(false)
   const { userLog } = useContext(AuthContext)
+  const { bookInfo } = useContext(SelectedBookContext)
   /* Seguimos aqui, intentando actualizar tanto en BBDD como en contexto el rating del libro
   con cada accion */
-  console.log(bookInfo)
 
   /* Custom Hook tal vez */
   useEffect(() => {
-    getAllReviews(bookInfo.id)
+    getAllReviews(bookInfo.book.id)
       .then(result => {
         setReviews(result.data)
         setError(null)
@@ -96,8 +97,8 @@ const ReviewsModal = ({ onClose, bookInfo }) => {
       }
       {
         reviews
-          ? (!viewForm ? showReviews() : <AddReviewForm onClickCancel={onClickCancel} onClose={onClose} bookInfo={bookInfo} />)
-          : (!viewForm ? null : <AddReviewForm onClickCancel={onClickCancel} onClose={onClose} bookInfo={bookInfo} />)
+          ? (!viewForm ? showReviews() : <AddReviewForm onClickCancel={onClickCancel} onClose={onClose} />)
+          : (!viewForm ? null : <AddReviewForm onClickCancel={onClickCancel} onClose={onClose} />)
       }
     </div>, document.getElementById('modal')
   )
