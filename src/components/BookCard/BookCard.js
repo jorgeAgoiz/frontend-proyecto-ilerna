@@ -22,12 +22,12 @@ const BookCard = () => {
 
   const onHandleDeleteBook = async (evt) => {
     evt.preventDefault()
-    const deletedBook = await deleteBook(bookInfo.book.book.id)
+    const deletedBook = await deleteBook(bookInfo.book.id)
     if (!deletedBook.success) {
       return setError(deletedBook.message)
     }
     return history.push('/')
-  }
+  }// Aqui deberemos hacer algo al respecto
 
   const onHandleEditBook = () => {
     return history.push(`/edit-book/${bookInfo.book.id}`)
@@ -52,7 +52,7 @@ const BookCard = () => {
           <h2>Valoración global:</h2>
           <div id='rating-data'>
             <img src='../valoration.png' alt='val-icon' width='40px' height='40px' />
-            <p>{bookInfo.book.rating}</p>
+            <p>{bookInfo.book.average}</p>
           </div>
         </div>
         <div className='book-created-at'>

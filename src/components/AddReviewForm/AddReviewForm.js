@@ -20,7 +20,7 @@ const AddReviewForm = ({ onClickCancel, onClose }) => {
     const idUser = userLog.id
     const textReview = evt.target.text_review.value
     const rating = evt.target.valoration.value
-    const valorations = [...valReviews, parseInt(rating)]
+    const valorations = [...valReviews, parseInt(rating), bookInfo.book.rating]
 
     const newRating = calculateAverage(valorations)
     const data = {
@@ -35,13 +35,13 @@ const AddReviewForm = ({ onClickCancel, onClose }) => {
       return setError(newReview.message)
     }
     setError(null)
-    const ratingUpdated = await updateBook({ rating: newRating, id: idBook })
+    const ratingUpdated = await updateBook({ average: newRating, id: idBook })
     if (!ratingUpdated.success) {
       return setError(ratingUpdated.message)
     }
     const bookUpd = {
       ...bookInfo.book,
-      rating: newRating
+      average: newRating
     }
     setBookInfo({ selected: true, book: bookUpd })
     return onClose()
