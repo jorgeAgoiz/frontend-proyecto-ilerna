@@ -8,7 +8,6 @@ import './EditDelBtns.css'
 const EditDelBtns = ({ nameClass, idBook, idReview, setReviews, reviews, setError }) => {
   const { bookInfo, setBookInfo } = useContext(SelectedBookContext)
 
-  console.log(bookInfo)
   const onHandleDelete = async () => {
     const result = await deleteReview(idReview)
     if (!result.success) {
@@ -16,19 +15,23 @@ const EditDelBtns = ({ nameClass, idBook, idReview, setReviews, reviews, setErro
     }
     const newArray = reviews.filter(rev => rev.id !== idReview)
     setReviews(newArray)
+
     const revsVals = [...newArray.map(rev => rev.valoration), bookInfo.book.rating]
     const newAverage = calculateAverage(revsVals)
     const averageUpdated = await updateBook({ average: newAverage, id: bookInfo.book.id })
+
     if (!averageUpdated.success) {
       return setError(averageUpdated.message)
     }
     setError(null)
+
     const newBookInfo = {
-      ...bookInfo,
-      average: newAverage
+      selected: true,
+      ...bookInfo
     }
+    newBookInfo.book.average = newAverage
     return setBookInfo(newBookInfo)
-  }/* Esto no funciona, continuaremos aqui mismo */
+  }
 
   return (
     <div id='review-btns'>

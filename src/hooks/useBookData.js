@@ -26,7 +26,7 @@ const useBookData = (bookId) => {
           return history.push('/')
         })
     }
-  }, [books, bookId, setBooks, history])
+  }, [books, bookId])/* Vigilaremos estas dependencias no lo tengo claro */
 
   return { history, bookInfo, setBooks, books }
 }

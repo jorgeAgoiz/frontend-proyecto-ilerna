@@ -3,14 +3,20 @@ import { getSpecificReview } from '../services/apiCalls'
 
 const useReviewData = (reviewId) => {
   const [rev, setRev] = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     if (!rev) {
-      getSpecificReview(reviewId).then(response => setRev(response.data))
+      getSpecificReview(reviewId)
+        .then(response => {
+          setError(null)
+          return setRev(response.data)
+        })
+        .catch(err => setError(err.message))
     }
-  }, [reviewId])
+  }, [reviewId, rev])
 
-  return { rev, setRev }
+  return { rev, setRev, error, setError }
 }
 
 export default useReviewData

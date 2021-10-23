@@ -45,7 +45,7 @@ const ReviewsModal = ({ onClose }) => {
         <div className='review-ind' key={rev.id}>
           <h2>{rev.text_review}</h2>
           <div id='review-user-data'>
-            <p>{rev.username.toUpperCase()}</p>
+            <p>{rev.username}</p>
             <div id='review-value'>
               <p>{rev.valoration}</p>
               <img src='../star.png' alt='star-icon' width='12px' height='12px' />

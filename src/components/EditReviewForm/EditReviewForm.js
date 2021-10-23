@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import { SelectedBookContext } from '../../context/SelectedBookContext'
 import useReviewData from '../../hooks/useReviewData'
-import { updateReview } from '../../services/apiCalls'
+import { getAllReviews, updateBook, updateReview } from '../../services/apiCalls'
+import { calculateAverage } from '../../utils/calculateAverage'
 import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './EditReviewForm.css'
 
 const EditReviewForm = () => {
   const { reviewId } = useParams()
-  const { rev } = useReviewData(reviewId)
-  const [error, setError] = useState(null)
+  const { rev, setError, error } = useReviewData(reviewId)
+  const { bookInfo, setBookInfo } = useContext(SelectedBookContext)
   const history = useHistory()
 
   const onHandleSubmit = async (evt) => {
@@ -24,6 +26,22 @@ const EditReviewForm = () => {
       if (!response.success) {
         return setError(response.message)
       }
+
+      const listReviews = await getAllReviews(rev.id_book)
+      const arrayToAverage = listReviews.data.map(rev => rev.valoration)
+      arrayToAverage.push(bookInfo.book.rating)
+      const newAverage = calculateAverage(arrayToAverage)
+
+      const averageUpdated = await updateBook({ average: newAverage, id: bookInfo.book.id })
+      if (!averageUpdated.success) {
+        return setError(averageUpdated.message)
+      }
+
+      const newBookInfo = {
+        ...bookInfo.book,
+        average: newAverage
+      }
+      setBookInfo({ selected: true, book: newBookInfo })
       setError(null)
       return history.push(`/book/${rev.id_book}`)
     } catch (error) {
@@ -54,7 +72,7 @@ const EditReviewForm = () => {
   return (
     <div className='edit-review'>
       <h1>Editar Reseña</h1>
-      {error ? <p className='error-msg-p'>{error}</p> : null}{/* Estilar este error */}
+      {error ? <p className='error-msg-p'>{error}</p> : null}
       <form onSubmit={onHandleSubmit}>
         <label htmlFor='text-review'>Reseña: </label>
         <textarea
