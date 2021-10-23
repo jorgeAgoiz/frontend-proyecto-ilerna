@@ -30,7 +30,8 @@ const AddBookForm = () => {
     if (!newBookAdded.success) {
       return setError(newBookAdded.message)
     }
-    return history.push('/')
+    history.push('/')
+    return window.location.reload()
   }
 
   return (

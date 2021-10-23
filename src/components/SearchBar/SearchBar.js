@@ -10,7 +10,6 @@ const SearchBar = () => {
 
   const onHandleForm = async (evt) => {
     evt.preventDefault()
-    console.log(`Buscando su libro... ${evt.target.title.value}`)
     const book = await getBookByTitle(evt.target.title.value)
     if (!book.success) {
       setNotFound(true)

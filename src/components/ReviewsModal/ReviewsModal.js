@@ -14,8 +14,6 @@ const ReviewsModal = ({ onClose }) => {
   const [viewForm, setViewForm] = useState(false)
   const { userLog } = useContext(AuthContext)
   const { bookInfo } = useContext(SelectedBookContext)
-  /* Seguimos aqui, intentando actualizar tanto en BBDD como en contexto el rating del libro
-  con cada accion */
 
   /* Custom Hook tal vez */
   useEffect(() => {

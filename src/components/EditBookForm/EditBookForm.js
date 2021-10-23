@@ -18,13 +18,16 @@ const EditBookForm = () => {
 
   const onHandleSubmit = async (evt) => {
     evt.preventDefault()
+
     const bookData = {
       title: evt.target.title.value,
       author: evt.target.author.value,
       category: evt.target.category.value,
       book_description: evt.target.book_description.value,
-      id: bookInfo.book.id
+      id: bookInfo.book.id,
+      rating: bookInfo.book.rating
     }
+    console.log(bookData)
     const bookUpdated = await updateBook(bookData)
     if (!bookUpdated.success) {
       return setError(bookUpdated.message)

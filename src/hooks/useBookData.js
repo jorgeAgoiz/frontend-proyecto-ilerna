@@ -22,12 +22,12 @@ const useBookData = (bookId) => {
         })
       })
       .catch(err => {
-        console.log(err)
+        console.log(err)/* Manejemos este error */
         return history.push('/')
       })
   }, [bookId, history])
 
-  return { history, bookInfo, setBooks, books }
+  return { history, bookInfo, setBooks, books, setBookInfo }
 }
 
 export default useBookData

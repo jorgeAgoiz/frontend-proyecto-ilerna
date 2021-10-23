@@ -26,8 +26,10 @@ const BookCard = () => {
     if (!deletedBook.success) {
       return setError(deletedBook.message)
     }
-    return history.push('/')
-  }// Aqui deberemos hacer algo al respecto borrando el contexto
+
+    history.push('/')
+    return window.location.reload()
+  }
 
   const onHandleEditBook = () => {
     return history.push(`/edit-book/${bookInfo.book.id}`)
@@ -104,8 +106,3 @@ const BookCard = () => {
 }
 
 export default BookCard
-
-/* Al eliminar libro, se bloquea el useEffect y entra en bucle de llamadas
-  Actualizar average con el edit review
-  Añadir modificar rating con el edit book y actualizar el average
-*/
