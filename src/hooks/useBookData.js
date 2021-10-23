@@ -10,28 +10,24 @@ const useBookData = (bookId) => {
   const history = useHistory()
 
   useEffect(() => {
-    if (books.data && books.data.length > 0) {
-      setBookInfo({
-        selected: true,
-        book: books.data.filter(book => book.id.toString() === bookId)[0]
-      })
-    } else {
-      const page = sessionStorage.getItem('page')
-      const order = sessionStorage.getItem('order')
-      const direction = sessionStorage.getItem('direction')
-      getAllBooks(page, order, direction)
-        .then(data => setBooks(data))
-        .catch(err => {
-          console.log(err)/* Tenemos que manejar este error */
-          return history.push('/')
+    const page = sessionStorage.getItem('page')
+    const order = sessionStorage.getItem('order')
+    const direction = sessionStorage.getItem('direction')
+    getAllBooks(page, order, direction)
+      .then(results => {
+        setBooks(results)
+        return setBookInfo({
+          selected: true,
+          book: results.data.filter(book => book.id.toString() === bookId)[0]
         })
-    }
-  }, [bookId, books, history, setBooks, setBookInfo])/* Vigilaremos estas dependencias no lo tengo claro */
+      })
+      .catch(err => {
+        console.log(err)
+        return history.push('/')
+      })
+  }, [bookId, history])
 
   return { history, bookInfo, setBooks, books }
 }
 
 export default useBookData
-
-/* Que pretendemos con este Hook???? Es un bucle mal construido ahora mismo
-yo creo */
