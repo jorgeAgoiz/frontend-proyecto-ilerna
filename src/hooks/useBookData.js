@@ -26,9 +26,12 @@ const useBookData = (bookId) => {
           return history.push('/')
         })
     }
-  }, [books, bookId])/* Vigilaremos estas dependencias no lo tengo claro */
+  }, [bookId, books, history, setBooks, setBookInfo])/* Vigilaremos estas dependencias no lo tengo claro */
 
   return { history, bookInfo, setBooks, books }
 }
 
 export default useBookData
+
+/* Que pretendemos con este Hook???? Es un bucle mal construido ahora mismo
+yo creo */

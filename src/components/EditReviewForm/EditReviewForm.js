@@ -43,7 +43,7 @@ const EditReviewForm = () => {
       }
       setBookInfo({ selected: true, book: newBookInfo })
       setError(null)
-      return history.push(`/book/${rev.id_book}`)
+      return history.goBack()
     } catch (error) {
       return setError(error.message)
     }
