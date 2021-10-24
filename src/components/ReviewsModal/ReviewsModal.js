@@ -26,7 +26,7 @@ const ReviewsModal = ({ onClose }) => {
         setError(err.message)
         return console.log(err)
       })
-  }, [bookInfo, error])
+  }, [error, bookInfo])
   /* Custom Hook tal vez */
 
   const onHandleFormView = () => {

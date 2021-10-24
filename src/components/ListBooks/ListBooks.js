@@ -2,7 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './ListBooks.css'
 
-const ListBooks = ({ allBooks, nextPage, previousPage, changingQuery }) => {
+const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQuery }) => {
+  console.log(page)
+  console.log(numPages)
+
   const showBooks = (books) => {
     return books.map(book => {
       return (
@@ -49,12 +52,15 @@ const ListBooks = ({ allBooks, nextPage, previousPage, changingQuery }) => {
         </tbody>
       </table>
       <div className='num-pages'>
-        <div className='previous-icon' onClick={previousPage}>
-          <img src='previous.png' alt='book-icon' height='45px' width='45px' />
+        <div className='previous-icon' onClick={previousPage} hidden={page <= 1}>
+          <img src='previous.png' alt='book-icon' height='38px' width='38px' />
         </div>
-        <div className='next-icon' onClick={nextPage}>
-          <img src='next.png' alt='book-icon' height='45px' width='45px' />
+        <div className='next-icon' onClick={nextPage} hidden={page >= numPages}>
+          <img src='next.png' alt='book-icon' height='38px' width='38px' />
         </div>
+      </div>
+      <div className='current-page'>
+        <p>Pagina {page} de {numPages}</p>
       </div>
     </div>
   )

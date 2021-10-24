@@ -9,7 +9,7 @@ import { deleteBook } from '../../services/apiCalls'
 const BookCard = () => {
   const { bookId } = useParams()
   const { userLog } = useContext(AuthContext)
-  const { history, bookInfo } = useBookData(bookId)
+  const { history, bookInfo, setBooks } = useBookData(bookId)
   const [modal, setModal] = useState(false)
   const [error, setError] = useState(null)
 
@@ -26,9 +26,8 @@ const BookCard = () => {
     if (!deletedBook.success) {
       return setError(deletedBook.message)
     }
-
-    history.push('/')
-    return window.location.reload()
+    setBooks({})
+    return history.push('/')
   }
 
   const onHandleEditBook = () => {

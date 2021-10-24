@@ -19,7 +19,9 @@ const SearchList = () => {
       sessionStorage.setItem('page', page)
       sessionStorage.setItem('order', order)
       sessionStorage.setItem('direction', direction)
-      getAllBooks(page, order, direction).then(data => setBooks(data))
+      getAllBooks(page, order, direction)
+        .then(data => setBooks(data))
+        .catch(err => console.log(err))/* Manejar este error */
       return setNewRequest(false)
     }
   }, [books, setBooks, page, newRequest])
@@ -51,6 +53,8 @@ const SearchList = () => {
       {
       books.success
         ? <ListBooks
+            page={page}
+            numPages={books.number_pages}
             allBooks={books}
             nextPage={nextPage}
             previousPage={previousPage}

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
+import { BooksContext } from '../../context/BooksContext'
 import { createNewBook } from '../../services/apiCalls'
 import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
@@ -8,6 +9,7 @@ import './AddBookForm.css'
 
 const AddBookForm = () => {
   const { userLog } = useContext(AuthContext)
+  const { setBooks } = useContext(BooksContext)
   const [error, setError] = useState(null)
   const history = useHistory()
 
@@ -30,8 +32,9 @@ const AddBookForm = () => {
     if (!newBookAdded.success) {
       return setError(newBookAdded.message)
     }
-    history.push('/')
-    return window.location.reload()
+
+    setBooks({})
+    return history.push('/')
   }
 
   return (
@@ -55,15 +58,17 @@ const AddBookForm = () => {
             <option value='biografia'>Biografía</option>
             <option value='cientifico'>Científico</option>
             <option value='ciencia ficción'>Ciencia ficción</option>
+            <option value='consulta'>Consulta</option>
             <option value='cuento'>Cuento</option>
             <option value='deporte'>Deporte</option>
-            <option value='humor'>Humor</option>
-            <option value='salud'>Salud</option>
-            <option value='suspense'>Suspense</option>
-            <option value='sociedad'>Sociedad</option>
-            <option value='novela'>Novela</option>
             <option value='historia'>Historia</option>
-            <option value='consulta'>Consulta</option>
+            <option value='humor'>Humor</option>
+            <option value='novela'>Novela</option>
+            <option value='relatos cortos'>Relatos cortos</option>
+            <option value='salud'>Salud</option>
+            <option value='sociedad'>Sociedad</option>
+            <option value='suspense'>Suspense</option>
+            <option value='terror'>Terror</option>
           </select>
         </div>
         <div id='valoration-div'>

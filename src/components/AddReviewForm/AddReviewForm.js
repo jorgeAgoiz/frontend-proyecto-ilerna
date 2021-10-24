@@ -14,6 +14,8 @@ const AddReviewForm = ({ onClickCancel, onClose }) => {
   const [error, setError] = useState(null)
   const { valReviews } = useValorations(bookInfo)
 
+  /* Igual hay que usar el contexto dentro del custom hoook */
+
   const onHandleSubmit = async (evt) => {
     evt.preventDefault()
     const idBook = bookInfo.book.id

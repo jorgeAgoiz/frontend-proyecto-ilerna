@@ -27,7 +27,6 @@ const EditBookForm = () => {
       id: bookInfo.book.id,
       rating: bookInfo.book.rating
     }
-    console.log(bookData)
     const bookUpdated = await updateBook(bookData)
     if (!bookUpdated.success) {
       return setError(bookUpdated.message)
@@ -68,15 +67,17 @@ const EditBookForm = () => {
               <option value='biografia'>Biografía</option>
               <option value='cientifico'>Científico</option>
               <option value='ciencia ficción'>Ciencia ficción</option>
+              <option value='consulta'>Consulta</option>
               <option value='cuento'>Cuento</option>
               <option value='deporte'>Deporte</option>
-              <option value='humor'>Humor</option>
-              <option value='salud'>Salud</option>
-              <option value='suspense'>Suspense</option>
-              <option value='sociedad'>Sociedad</option>
-              <option value='novela'>Novela</option>
               <option value='historia'>Historia</option>
-              <option value='consulta'>Consulta</option>
+              <option value='humor'>Humor</option>
+              <option value='novela'>Novela</option>
+              <option value='relatos cortos'>Relatos cortos</option>
+              <option value='salud'>Salud</option>
+              <option value='sociedad'>Sociedad</option>
+              <option value='suspense'>Suspense</option>
+              <option value='terror'>Terror</option>
             </select>
           </div>
           <div id='description-book'>
