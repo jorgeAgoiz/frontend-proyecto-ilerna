@@ -13,6 +13,7 @@ import EditReviewForm from '../EditReviewForm/EditReviewForm'
 import EditBookForm from '../EditBookForm/EditBookForm'
 import AddBookForm from '../AddBookForm/AddBookForm'
 import { SelectedBookContextProvider } from '../../context/SelectedBookContext'
+import MyActivity from '../MyActivity/MyActivity'
 
 const App = () => {
   const { userLog } = useContext(AuthContext)
@@ -31,6 +32,7 @@ const App = () => {
               <Route path='/book/:bookId' exact component={!userLog.logged ? MainCover : BookCard} />
               <Route path='/edit-book/:bookId' exact component={!userLog.logged ? MainCover : EditBookForm} />
               <Route path='/add-book' exact component={!userLog.logged ? MainCover : AddBookForm} />
+              <Route path='/my-activity' exact component={!userLog.logged ? MainCover : MyActivity} />
             </SelectedBookContextProvider>
           </Switch>
         </BooksContextProvider>

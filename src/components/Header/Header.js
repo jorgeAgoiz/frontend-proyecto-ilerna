@@ -36,7 +36,7 @@ const Header = () => {
             <h2>Añadir Libro</h2>
           </div>
           <div className='session-btns'>
-            <Link className='signup' to='/my_activity'>Mi Actividad</Link>
+            <Link className='signup' to='/my-activity'>Mi Actividad</Link>
             <button className='signin' onClick={onHandleSignOut}>Cerrar Sesión</button>
           </div>
         </>

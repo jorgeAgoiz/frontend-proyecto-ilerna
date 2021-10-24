@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { BooksContext } from '../../context/BooksContext'
+import { SelectedBookContext } from '../../context/SelectedBookContext'
 import { getAllBooks } from '../../services/apiCalls'
 import ListBooks from '../ListBooks/ListBooks'
 import SearchBar from '../SearchBar/SearchBar'
@@ -7,6 +8,7 @@ import './SearchList.css'
 
 const SearchList = () => {
   const { books, setBooks } = useContext(BooksContext)
+  const { setBookInfo } = useContext(SelectedBookContext)
   const [page, setPage] = useState(1)
   const [order, setOrder] = useState('title')
   const [direction, setDirection] = useState('ASC')
@@ -14,6 +16,7 @@ const SearchList = () => {
 
   /* Podria ser un custom hook tal vez */
   useEffect(() => {
+    setBookInfo({ selected: false, book: {} })
     const currentPage = parseInt(books.page)
     if (!books.success || currentPage !== page || newRequest) {
       sessionStorage.setItem('page', page)

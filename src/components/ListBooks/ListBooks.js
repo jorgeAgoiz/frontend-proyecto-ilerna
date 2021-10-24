@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom'
 import './ListBooks.css'
 
 const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQuery }) => {
-  console.log(page)
-  console.log(numPages)
-
   const showBooks = (books) => {
     return books.map(book => {
       return (
