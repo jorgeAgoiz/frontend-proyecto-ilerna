@@ -59,9 +59,22 @@
   overflow-y: auto;
   gap: 0.4rem;
 }
-.myactivity-main .books-main .list-of-books p {
-  font-size: 1rem;
+.myactivity-main .books-main .list-of-books #a-book {
   padding: 0.3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  border: 1px solid black;
+}
+.myactivity-main .books-main .list-of-books #a-book h3 {
+  font-size: 1rem;
+  font-family: "Roboto Mono", monospace;
+}
+.myactivity-main .books-main .list-of-books #a-book p {
+  font-size: 0.7rem;
   font-family: "Roboto Mono", monospace;
 }
 
@@ -99,7 +112,7 @@
   overflow-y: auto;
   gap: 0.4rem;
 }
-.myactivity-main .review-main .list-of-reviews p {
+.myactivity-main .review-main .list-of-reviews {
   font-size: 1rem;
   padding: 0.3rem;
   font-family: "Roboto Mono", monospace;

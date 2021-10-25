@@ -155,8 +155,18 @@ export const addReview = (data) => {
     .catch(err => err)
 }
 
-export const getBooksOfUser = (id) => {
-  return fetch(`http://localhost:3012/books/${id}`, {
+export const getBooksOfUser = (userId) => {
+  return fetch(`http://localhost:3012/books/${userId}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(result => result.json())
+    .then(response => response)
+    .catch(err => err)
+}
+
+export const getReviewsOfUser = (userId) => {
+  return fetch(`http://localhost:3012/user_reviews/${userId}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
