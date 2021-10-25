@@ -155,16 +155,12 @@ export const addReview = (data) => {
     .catch(err => err)
 }
 
-export const updateRating = () => {
-  // Recibir el rating actual, numero de reviews y nueva puntuación
-
-  // Sumar nueva puntuación al rating y dividir por el numero de reviews
-
-  // Llamar a la api con el nuevo Rating
-
-  // Si por un casual se eliminara una review, restamos esa puntuación
-  // y dividimos nuevamente por el nuevo numero de reviews
-
-  // Para saber si se añade review o se quita usaremos un boolean true o false
-  // como argumento en la función
+export const getBooksOfUser = (id) => {
+  return fetch(`http://localhost:3012/books/${id}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(result => result.json())
+    .then(response => response)
+    .catch(err => err)
 }

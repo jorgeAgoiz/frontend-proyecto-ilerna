@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../../context/AuthContext'
+import { getBooksOfUser } from '../../services/apiCalls'
 import GenericBtn from '../GenericBtn/GenericBtn'
 import './MyActivity.css'
 
 const MyActivity = () => {
+  const { userLog } = useContext(AuthContext)
+  const [myBooks, setMyBooks] = useState([])
+  /* const [ myReviews, setMyReviews ] = useState([]) */
+
+  console.log(myBooks)
+
+  useEffect(() => {
+    getBooksOfUser(userLog.id)
+      .then(result => setMyBooks(result.data))
+      .then(response => {
+        /* Aqui llamaremos a las reviews */
+        console.log('Llamando reviews...')
+      })
+      .catch(err => console.log(err))
+  }, [userLog])
+
   return (
     <div className='myactivity-main'>
       <div className='myactivity-title'>
@@ -10,47 +28,15 @@ const MyActivity = () => {
       </div>
 
       <div className='books-main'>
-        <h2>Libros</h2>
+        <h2>Mis Libros</h2>
         <div className='list-of-books'>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
 
           {/* Aqui iran los libros */}
         </div>
       </div>
       <div className='review-main'>
-        <h2>Reseñas</h2>
+        <h2>Mis Reseñas</h2>
         <div className='list-of-reviews'>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
-          <p>Hola que tal</p>
 
           {/* Aqui iran las reseñas */}
         </div>
