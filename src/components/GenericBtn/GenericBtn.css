@@ -19,3 +19,26 @@
 .add-review-btn:active {
   background-color: rgb(197, 245, 108);
 }
+
+.delete-user-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Roboto Mono", monospace;
+  letter-spacing: 2px;
+  background-color: rgb(241, 134, 126);
+  padding: 0.4rem;
+  margin: 0.2rem;
+  border-radius: 0.8rem;
+  border: 1px solid black;
+  min-width: 14vw;
+}
+.delete-user-btn:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(219, 30, 16);
+  letter-spacing: 3px;
+  outline: 2px solid black;
+}
+.delete-user-btn:active {
+  background-color: rgb(119, 12, 4);
+}
