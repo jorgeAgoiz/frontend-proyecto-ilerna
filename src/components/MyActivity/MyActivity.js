@@ -1,48 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { SelectedBookContext } from '../../context/SelectedBookContext'
 import { getBooksOfUser, getReviewsOfUser } from '../../services/apiCalls'
 import GenericBtn from '../GenericBtn/GenericBtn'
+import MyBooks from '../MyBooks/MyBooks'
+import MyReviews from '../MyReviews/MyReviews'
 import './MyActivity.css'
 
 const MyActivity = () => {
   const { userLog } = useContext(AuthContext)
+  const { /* bookInfo, */ setBookInfo } = useContext(SelectedBookContext)
   const [myBooks, setMyBooks] = useState([])
   const [myReviews, setMyReviews] = useState([])
 
-  console.log(myReviews)
-
   useEffect(() => {
+    setBookInfo({ selected: false, book: {} })
+
     getBooksOfUser(userLog.id)
       .then(result => setMyBooks(result.data))
-      .catch(err => console.log(err))
+      .catch(err => console.log(err))/* Gestionar errores */
 
     getReviewsOfUser(userLog.id)
       .then(result => setMyReviews(result.data))
-      .catch(err => console.log(err))
+      .catch(err => console.log(err))/* Gestionar errores */
   }, [userLog])
-
-  const showMyBooks = () => {
-    return myBooks.map(book => {
-      const addDate = new Date(book.created_at).toLocaleDateString()
-      return (
-        <div id='a-book' key={book.id}>
-          <h3>{book.title}</h3>
-          <p>Añadido: {addDate}</p>
-        </div>
-      )
-    })
-  }
-
-  const showMyReviews = () => {
-    return myReviews.map(rev => {
-      return (
-        <div key={rev.id}>
-          <h3>{rev.title}</h3>
-          <p>Valoracion: {rev.valoration}</p>
-        </div>
-      )
-    })
-  }
 
   return (
     <div className='myactivity-main'>
@@ -54,7 +35,7 @@ const MyActivity = () => {
         <h2>Mis Libros</h2>
         <div className='list-of-books'>
           {
-            myBooks.length > 0 ? showMyBooks() : null
+            myBooks.length > 0 ? <MyBooks books={myBooks} /> : null
           }
         </div>
       </div>
@@ -62,9 +43,8 @@ const MyActivity = () => {
         <h2>Mis Reseñas</h2>
         <div className='list-of-reviews'>
           {
-            myReviews.length > 0 ? showMyReviews() : null
+            myReviews.length > 0 ? <MyReviews reviews={myReviews} /> : null
           }
-          {/* Aqui iran las reseñas */}
         </div>
       </div>
       <div className='delete-user'>

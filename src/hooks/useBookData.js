@@ -10,21 +10,24 @@ const useBookData = (bookId) => {
   const history = useHistory()
 
   useEffect(() => {
-    const page = sessionStorage.getItem('page')
-    const order = sessionStorage.getItem('order')
-    const direction = sessionStorage.getItem('direction')
-    getAllBooks(page, order, direction)
-      .then(results => {
-        setBooks(results)
-        return setBookInfo({
-          selected: true,
-          book: results.data.filter(book => book.id.toString() === bookId)[0]
+    if (!bookInfo.selected) {
+      console.log('estoy dentro')
+      const page = sessionStorage.getItem('page')
+      const order = sessionStorage.getItem('order')
+      const direction = sessionStorage.getItem('direction')
+      getAllBooks(page, order, direction)
+        .then(results => {
+          setBooks(results)
+          return setBookInfo({
+            selected: true,
+            book: results.data.filter(book => book.id.toString() === bookId)[0]
+          })
         })
-      })
-      .catch(err => {
-        console.log(err)/* Manejemos este error */
-        return history.push('/')
-      })
+        .catch(err => {
+          console.log(err)/* Manejemos este error */
+          return history.push('/')
+        })
+    }
   }, [bookId, history])
 
   return { history, bookInfo, setBooks, books, setBookInfo }

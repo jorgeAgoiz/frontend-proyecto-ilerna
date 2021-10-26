@@ -15,6 +15,7 @@ const SearchBar = () => {
       setNotFound(true)
       return console.log('NOT FOUND')
     }
+    /* Aqui debemos introducir el setBookInfo y meterle los datos del libro */
     return history.push(`/book/${book.data.id}`)
   }
 
