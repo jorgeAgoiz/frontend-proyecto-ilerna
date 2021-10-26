@@ -37,8 +37,8 @@ const MyActivity = () => {
     return myReviews.map(rev => {
       return (
         <div key={rev.id}>
-          <h3>{rev.text_review}</h3>
-          <p>{rev.valoration}</p>
+          <h3>{rev.title}</h3>
+          <p>Valoracion: {rev.valoration}</p>
         </div>
       )
     })
