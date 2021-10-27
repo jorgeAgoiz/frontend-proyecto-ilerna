@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { getAllReviews } from '../services/apiCalls'
+import { SelectedBookContext } from '../context/SelectedBookContext'
 
-const useValorations = (bookInfo) => {
+const useValorations = () => {
   const [valReviews, setValReviews] = useState([])
+  const { bookInfo, setBookInfo } = useContext(SelectedBookContext)
 
   useEffect(() => {
     getAllReviews(bookInfo.book.id)
@@ -11,7 +13,7 @@ const useValorations = (bookInfo) => {
       })
       .catch(err => err)
   }, [bookInfo])
-  return { valReviews }
+  return { valReviews, bookInfo, setBookInfo }
 }
 
 export default useValorations

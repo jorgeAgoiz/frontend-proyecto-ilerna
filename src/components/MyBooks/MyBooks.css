@@ -10,7 +10,7 @@
 }
 .myactivity-main .books-main .list-of-books #a-book:hover {
   cursor: pointer;
-  background-color: rgb(243, 238, 167);
+  background-color: rgb(186, 225, 243);
   outline: 2px solid black;
 }
 .myactivity-main .books-main .list-of-books #a-book:active {

@@ -6,15 +6,11 @@ import { AuthContext } from '../../context/AuthContext'
 import { addReview, updateBook } from '../../services/apiCalls'
 import { calculateAverage } from '../../utils/calculateAverage'
 import useValorations from '../../hooks/useValorations'
-import { SelectedBookContext } from '../../context/SelectedBookContext'
 
 const AddReviewForm = ({ onClickCancel, onClose }) => {
   const { userLog } = useContext(AuthContext)
-  const { bookInfo, setBookInfo } = useContext(SelectedBookContext)
   const [error, setError] = useState(null)
-  const { valReviews } = useValorations(bookInfo)
-
-  /* Igual hay que usar el contexto dentro del custom hoook */
+  const { valReviews, bookInfo, setBookInfo } = useValorations()
 
   const onHandleSubmit = async (evt) => {
     evt.preventDefault()

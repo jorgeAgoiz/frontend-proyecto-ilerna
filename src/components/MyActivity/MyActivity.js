@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { SelectedBookContext } from '../../context/SelectedBookContext'
-import { getBooksOfUser, getReviewsOfUser } from '../../services/apiCalls'
+import { deleteUser, getBooksOfUser, getReviewsOfUser } from '../../services/apiCalls'
 import GenericBtn from '../GenericBtn/GenericBtn'
 import MyBooks from '../MyBooks/MyBooks'
 import MyReviews from '../MyReviews/MyReviews'
 import './MyActivity.css'
 
 const MyActivity = () => {
-  const { userLog } = useContext(AuthContext)
-  const { /* bookInfo, */ setBookInfo } = useContext(SelectedBookContext)
+  const { userLog, setUserLog } = useContext(AuthContext)
+  const { setBookInfo } = useContext(SelectedBookContext)
   const [myBooks, setMyBooks] = useState([])
   const [myReviews, setMyReviews] = useState([])
+  const history = useHistory()
 
   useEffect(() => {
     setBookInfo({ selected: false, book: {} })
@@ -25,6 +27,25 @@ const MyActivity = () => {
       .catch(err => console.log(err))/* Gestionar errores */
   }, [userLog])
 
+  const onHandleDeleteUser = async () => {
+    const data = {
+      id: userLog.id,
+      username: userLog.username
+    }
+    const userDeleted = await deleteUser(data)
+    if (!userDeleted.success) {
+      return console.log('Something went wrong.')/* Manejo de errores */
+    }
+    sessionStorage.clear()
+    setUserLog({
+      username: null,
+      user_id: null,
+      created_at: null,
+      logged: false
+    })
+    return history.push('/')
+  }
+
   return (
     <div className='myactivity-main'>
       <div className='myactivity-title'>
@@ -35,7 +56,7 @@ const MyActivity = () => {
         <h2>Mis Libros</h2>
         <div className='list-of-books'>
           {
-            myBooks.length > 0 ? <MyBooks books={myBooks} /> : null
+            myBooks ? <MyBooks books={myBooks} /> : null
           }
         </div>
       </div>
@@ -43,13 +64,13 @@ const MyActivity = () => {
         <h2>Mis Reseñas</h2>
         <div className='list-of-reviews'>
           {
-            myReviews.length > 0 ? <MyReviews reviews={myReviews} /> : null
+            myReviews ? <MyReviews reviews={myReviews} /> : null
           }
         </div>
       </div>
       <div className='delete-user'>
         <GenericBtn
-          onClickFunc={() => console.log('Hola que tal')}
+          onClickFunc={onHandleDeleteUser}
           text='Eliminar usuario'
           nameClass='delete-user-btn'
         />
@@ -59,6 +80,3 @@ const MyActivity = () => {
 }
 
 export default MyActivity
-
-/* Seguimos aqui estilando las reseñas propias y quizá
-tengamos que darle una vuelta al backend */

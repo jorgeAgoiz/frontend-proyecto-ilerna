@@ -1,3 +1,4 @@
+/** ********** LLAMADAS DE AUTH ************/
 export const createUser = (user) => {
   return fetch('http://localhost:3012/signup', {
     method: 'POST',
@@ -26,6 +27,19 @@ export const signinUser = (user) => {
     .catch(err => err)
 }
 
+export const deleteUser = (data) => {
+  return fetch('http://localhost:3012/delete_account', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(result => result.json())
+    .then(response => response)
+    .catch(err => err)
+}
+/** ********** LLAMADAS DE AUTH ************/
+
+/** ********** LLAMADAS DE LIBROS ************/
 export const getAllBooks = (page, order, direction) => {
   return fetch(`http://localhost:3012/books?page=${page}&order=${order}&direction=${direction}`, {
     method: 'GET',
@@ -92,6 +106,18 @@ export const getBookByTitle = (title) => {
     .catch(err => err)
 }
 
+export const getBooksOfUser = (userId) => {
+  return fetch(`http://localhost:3012/books/${userId}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(result => result.json())
+    .then(response => response)
+    .catch(err => err)
+}
+/** ********** LLAMADAS DE LIBROS ************/
+
+/** ********** LLAMADAS DE rESEÑAS ************/
 export const getAllReviews = (idBook) => {
   return fetch(`http://localhost:3012/book_reviews/${idBook}`, {
     method: 'GET',
@@ -155,16 +181,6 @@ export const addReview = (data) => {
     .catch(err => err)
 }
 
-export const getBooksOfUser = (userId) => {
-  return fetch(`http://localhost:3012/books/${userId}`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
-  })
-    .then(result => result.json())
-    .then(response => response)
-    .catch(err => err)
-}
-
 export const getReviewsOfUser = (userId) => {
   return fetch(`http://localhost:3012/user_reviews/${userId}`, {
     method: 'GET',
@@ -174,3 +190,4 @@ export const getReviewsOfUser = (userId) => {
     .then(response => response)
     .catch(err => err)
 }
+/** ********** LLAMADAS DE RESEÑAS ************/

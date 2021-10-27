@@ -94,11 +94,6 @@
   overflow-y: auto;
   gap: 0.4rem;
 }
-.myactivity-main .review-main .list-of-reviews {
-  font-size: 1rem;
-  padding: 0.3rem;
-  font-family: "Roboto Mono", monospace;
-}
 
 .myactivity-main .delete-user {
   grid-column: 3 / 6;

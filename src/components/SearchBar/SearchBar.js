@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
+import { SelectedBookContext } from '../../context/SelectedBookContext'
 import { getBookByTitle } from '../../services/apiCalls'
 import InputConfirm from '../InputConfirm/InputConfirm'
 import './SearchBar.css'
 
 const SearchBar = () => {
-  const history = useHistory()
+  const { setBookInfo } = useContext(SelectedBookContext)
   const [notFound, setNotFound] = useState(false)
+  const history = useHistory()
 
   const onHandleForm = async (evt) => {
     evt.preventDefault()
@@ -15,7 +17,7 @@ const SearchBar = () => {
       setNotFound(true)
       return console.log('NOT FOUND')
     }
-    /* Aqui debemos introducir el setBookInfo y meterle los datos del libro */
+    setBookInfo({ selected: true, book: book.data })
     return history.push(`/book/${book.data.id}`)
   }
 

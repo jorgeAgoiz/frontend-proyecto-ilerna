@@ -11,7 +11,6 @@ const useBookData = (bookId) => {
 
   useEffect(() => {
     if (!bookInfo.selected) {
-      console.log('estoy dentro')
       const page = sessionStorage.getItem('page')
       const order = sessionStorage.getItem('order')
       const direction = sessionStorage.getItem('direction')
