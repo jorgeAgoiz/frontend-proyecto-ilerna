@@ -141,10 +141,3 @@
   justify-content: center;
   align-items: center;
 }
-
-.error-msg {
-  font-size: 1.6rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: rgb(202, 2, 2);
-}

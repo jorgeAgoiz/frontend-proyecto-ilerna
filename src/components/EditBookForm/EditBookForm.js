@@ -18,7 +18,6 @@ const EditBookForm = () => {
 
   const onHandleSubmit = async (evt) => {
     evt.preventDefault()
-
     const bookData = {
       title: evt.target.title.value,
       author: evt.target.author.value,
@@ -27,10 +26,12 @@ const EditBookForm = () => {
       id: bookInfo.book.id,
       rating: bookInfo.book.rating
     }
+
     const bookUpdated = await updateBook(bookData)
     if (!bookUpdated.success) {
       return setError(bookUpdated.message)
     }
+
     setError(null)
     const booksArray = books.data.map(book => {
       if (book.id === parseInt(bookId)) {
@@ -90,7 +91,7 @@ const EditBookForm = () => {
           </div>
           <div id='submit-book'>
             <InputConfirm textValue='Guardar' nameClass='confirm-search-btn' />
-            {error ? (<p>{error}</p>) : null}
+            {error ? (<p className='error-msg-p'>{error}</p>) : null}
             <CancelBtn nameClass='cancel-generic-btn' text='Cancelar' onClickFunc={onHandleCancel} />
           </div>
         </form>

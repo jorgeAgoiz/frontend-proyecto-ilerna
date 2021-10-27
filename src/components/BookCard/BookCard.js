@@ -26,6 +26,7 @@ const BookCard = () => {
     if (!deletedBook.success) {
       return setError(deletedBook.message)
     }
+    setError(null)
     setBooks({})
     return history.push('/')
   }
@@ -61,9 +62,9 @@ const BookCard = () => {
           <p>{addDate}</p>
         </div>
         <div className='book-description'>
-          {error ? (<p className='error-msg-p'>{error}</p>) : null}{/* Estilar este error */}
+          {error ? (<p className='error-msg-p'>{error}</p>) : null}
           <h2>Descripción:</h2>
-          <p>{bookInfo.book.book_description}</p>
+          <p id='description-text'>{bookInfo.book.book_description}</p>
         </div>
         <div className='book-reviews'>
           {modal ? <ReviewsModal onClose={hideReviewsModal} /> : null}

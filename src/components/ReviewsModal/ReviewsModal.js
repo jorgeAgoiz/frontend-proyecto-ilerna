@@ -15,19 +15,15 @@ const ReviewsModal = ({ onClose }) => {
   const { userLog } = useContext(AuthContext)
   const { bookInfo } = useContext(SelectedBookContext)
 
-  /* Custom Hook tal vez */
   useEffect(() => {
     getAllReviews(bookInfo.book.id)
       .then(result => {
         setReviews(result.data)
-        setError(null)
       })
       .catch(err => {
-        setError(err.message)
-        return console.log(err)
+        return setError(err.message)
       })
   }, [error, bookInfo])
-  /* Custom Hook tal vez */
 
   const onHandleFormView = () => {
     return setViewForm(true)
@@ -89,7 +85,7 @@ const ReviewsModal = ({ onClose }) => {
           ? null
           : (
             <div>
-              <h2>{error}</h2>
+              <p className='error-msg-p'>{error}</p>
             </div>
             )
       }

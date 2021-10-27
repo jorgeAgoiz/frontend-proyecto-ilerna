@@ -5,7 +5,7 @@ import { calculateAverage } from '../../utils/calculateAverage'
 import { deleteReview, updateBook } from '../../services/apiCalls'
 import './EditDelBtns.css'
 
-const EditDelBtns = ({ nameClass, idBook, idReview, setReviews, reviews, setError }) => {
+const EditDelBtns = ({ idReview, setReviews, reviews, setError }) => {
   const { bookInfo, setBookInfo } = useContext(SelectedBookContext)
 
   const onHandleDelete = async () => {
