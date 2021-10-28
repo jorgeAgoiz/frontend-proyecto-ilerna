@@ -13,18 +13,20 @@ const MyActivity = () => {
   const { setBookInfo } = useContext(SelectedBookContext)
   const [myBooks, setMyBooks] = useState([])
   const [myReviews, setMyReviews] = useState([])
+  const [error, setError] = useState(null)
   const history = useHistory()
 
   useEffect(() => {
     setBookInfo({ selected: false, book: {} })
+    setError(null)
 
     getBooksOfUser(userLog.id)
       .then(result => setMyBooks(result.data))
-      .catch(err => console.log(err))/* Gestionar errores */
+      .catch(err => setError(err.message))
 
     getReviewsOfUser(userLog.id)
       .then(result => setMyReviews(result.data))
-      .catch(err => console.log(err))/* Gestionar errores */
+      .catch(err => setError(err.message))
   }, [userLog])
 
   const onHandleDeleteUser = async () => {
@@ -34,7 +36,7 @@ const MyActivity = () => {
     }
     const userDeleted = await deleteUser(data)
     if (!userDeleted.success) {
-      return console.log('Something went wrong.')/* Manejo de errores */
+      return setError(userDeleted.message)
     }
     sessionStorage.clear()
     setUserLog({
@@ -50,6 +52,7 @@ const MyActivity = () => {
     <div className='myactivity-main'>
       <div className='myactivity-title'>
         <h1>Mi Actividad</h1>
+        <p className='error-msg-p'>{error}</p>
       </div>
 
       <div className='books-main'>
@@ -64,7 +67,7 @@ const MyActivity = () => {
         <h2>Mis Reseñas</h2>
         <div className='list-of-reviews'>
           {
-            myReviews ? <MyReviews reviews={myReviews} /> : null
+            myReviews ? <MyReviews reviews={myReviews} setError={setError} /> : null
           }
         </div>
       </div>

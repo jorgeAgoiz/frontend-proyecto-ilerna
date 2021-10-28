@@ -4,14 +4,14 @@ import { SelectedBookContext } from '../../context/SelectedBookContext'
 import { getSpecificBook } from '../../services/apiCalls'
 import './MyReviews.css'
 
-const MyReviews = ({ reviews }) => {
+const MyReviews = ({ reviews, setError }) => {
   const { setBookInfo } = useContext(SelectedBookContext)
   const history = useHistory()
 
   const onHandleClick = async (rev) => {
     const theBook = await getSpecificBook(rev.id_book)
     if (!theBook.success) {
-      return console.log('something went wrong')/* Manejar este error */
+      return setError(theBook.message)
     }
     setBookInfo({ selected: true, book: theBook.data })
     return history.push(`/book/${rev.id_book}`)

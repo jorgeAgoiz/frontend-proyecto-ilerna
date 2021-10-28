@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React/* , { useContext } */ from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { SelectedBookContext } from '../../context/SelectedBookContext'
 import useReviewData from '../../hooks/useReviewData'
 import { getAllReviews, updateBook, updateReview } from '../../services/apiCalls'
 import { calculateAverage } from '../../utils/calculateAverage'
@@ -10,8 +9,7 @@ import './EditReviewForm.css'
 
 const EditReviewForm = () => {
   const { reviewId } = useParams()
-  const { rev, setError, error } = useReviewData(reviewId)
-  const { bookInfo, setBookInfo } = useContext(SelectedBookContext)
+  const { rev, setError, error, bookInfo, setBookInfo } = useReviewData(reviewId)
   const history = useHistory()
 
   const onHandleSubmit = async (evt) => {
@@ -31,7 +29,6 @@ const EditReviewForm = () => {
       const arrayToAverage = listReviews.data.map(rev => rev.valoration)
       arrayToAverage.push(bookInfo.book.rating)
       const newAverage = calculateAverage(arrayToAverage)
-
       const averageUpdated = await updateBook({ average: newAverage, id: bookInfo.book.id })
       if (!averageUpdated.success) {
         return setError(averageUpdated.message)

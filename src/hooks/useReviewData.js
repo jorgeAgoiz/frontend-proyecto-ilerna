@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
-import { getSpecificReview } from '../services/apiCalls'
+import { useContext, useEffect, useState } from 'react'
+import { SelectedBookContext } from '../context/SelectedBookContext'
+import { getSpecificBook, getSpecificReview } from '../services/apiCalls'
 
 const useReviewData = (reviewId) => {
   const [rev, setRev] = useState(null)
   const [error, setError] = useState(null)
+  const { bookInfo, setBookInfo } = useContext(SelectedBookContext)
 
   useEffect(() => {
     if (!rev) {
@@ -14,9 +16,18 @@ const useReviewData = (reviewId) => {
         })
         .catch(err => setError(err.message))
     }
-  }, [reviewId, rev])
 
-  return { rev, setRev, error, setError }
+    if (rev && !bookInfo.selected) {
+      getSpecificBook(rev.id_book)
+        .then(response => {
+          setError(null)
+          return setBookInfo({ selected: true, book: response.data })
+        })
+        .catch(err => setError(err.message))
+    }
+  }, [reviewId, rev, bookInfo])
+
+  return { rev, setRev, error, setError, bookInfo, setBookInfo }
 }
 
 export default useReviewData

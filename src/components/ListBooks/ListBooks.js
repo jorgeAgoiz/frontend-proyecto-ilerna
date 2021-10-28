@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './ListBooks.css'
 
-const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQuery }) => {
+const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQuery, error }) => {
   const showBooks = (books) => {
     return books.map(book => {
       return (
@@ -14,7 +14,6 @@ const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQ
             <Link to={`/book/${book.id}`}>
               <img title='Detalles del libro' src='view-details.png' alt='details-icon' width='30px' height='30px' />
             </Link>
-
           </td>
         </tr>
       )
@@ -23,6 +22,7 @@ const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQ
 
   return (
     <div className='list-books'>
+      {error ? <p className='error-msg-p'>{error}</p> : null}
       <table className='book-table'>
         <thead>
           <tr className='book-card'>

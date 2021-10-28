@@ -13,8 +13,8 @@ const SearchList = () => {
   const [order, setOrder] = useState('title')
   const [direction, setDirection] = useState('ASC')
   const [newRequest, setNewRequest] = useState(false)
+  const [error, setError] = useState(null)
 
-  /* Podria ser un custom hook tal vez */
   useEffect(() => {
     setBookInfo({ selected: false, book: {} })
     const currentPage = parseInt(books.page)
@@ -24,11 +24,10 @@ const SearchList = () => {
       sessionStorage.setItem('direction', direction)
       getAllBooks(page, order, direction)
         .then(data => setBooks(data))
-        .catch(err => console.log(err))/* Manejar este error */
+        .catch(err => setError(err.message))
       return setNewRequest(false)
     }
   }, [books, setBooks, page, newRequest])
-  /* Podria ser un custom hook tal vez */
 
   const nextPage = () => {
     if (page < books.number_pages) {
@@ -62,10 +61,10 @@ const SearchList = () => {
             nextPage={nextPage}
             previousPage={previousPage}
             changingQuery={changingQuery}
+            error={error}
           />
         : null
         }
-
     </div>
   )
 }
