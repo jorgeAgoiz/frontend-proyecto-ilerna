@@ -23,7 +23,7 @@ const useBookData = (bookId) => {
           })
         })
         .catch(err => {
-          console.log(err)/* Manejemos este error */
+          console.log(err)
           return history.push('/')
         })
     }

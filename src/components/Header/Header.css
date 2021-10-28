@@ -26,6 +26,8 @@
 }
 .title-logo img {
   margin: 0.4rem;
+  width: 45px;
+  height: 45px;
 }
 /* Título y Logo de la App */
 
@@ -42,6 +44,10 @@
 }
 .add-book-btn a {
   padding: 0.2rem;
+}
+.add-book-btn a img {
+  width: 55px;
+  height: 55px;
 }
 .add-book-btn a img:hover {
   width: 58px;
@@ -104,3 +110,112 @@
   background-color: rgb(4, 112, 103);
 }
 /* Botones del Header */
+
+/* Media Queries */
+@media (max-width: 980px) {
+  .title-logo h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  .session-btns {
+    width: 24vw;
+  }
+  .signin {
+    font-size: 0.9rem;
+  }
+  .signup {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 660px) {
+  .title-logo h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+  .add-book-btn a img {
+    width: 50px;
+    height: 50px;
+  }
+  .add-book-btn a img:hover {
+    width: 53px;
+    height: 53px;
+  }
+  .add-book-btn h2 {
+    font-size: 1rem;
+  }
+
+  .session-btns {
+    width: 26vw;
+  }
+  .signin {
+    font-size: 0.7rem;
+  }
+  .signup {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 500px) {
+  .title-logo h1 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+
+  .add-book-btn {
+    justify-content: center;
+    padding: 0.3rem;
+    gap: 0.2rem;
+  }
+  .add-book-btn a img {
+    width: 40px;
+    height: 40px;
+  }
+  .add-book-btn a img:hover {
+    width: 43px;
+    height: 43px;
+  }
+  .add-book-btn h2 {
+    font-size: 0.7rem;
+  }
+
+  .session-btns {
+    width: 26vw;
+  }
+  .signin {
+    font-size: 0.6rem;
+  }
+  .signup {
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 440px) {
+  .header {
+    grid-column: 1 / 6;
+    grid-row: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  .title-logo h1 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+  .title-logo img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .session-btns {
+    width: 60%;
+  }
+  .signin {
+    font-size: 0.9rem;
+  }
+  .signup {
+    font-size: 0.9rem;
+  }
+}
+/* Media Queries */

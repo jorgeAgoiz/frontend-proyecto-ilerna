@@ -25,7 +25,6 @@ const Signin = () => {
       username,
       password
     }
-    console.log(user)
     const userLogged = await signinUser(user)
     if (!userLogged.success) {
       return setError(userLogged.message)

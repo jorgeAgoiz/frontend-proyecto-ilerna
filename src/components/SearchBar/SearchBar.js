@@ -14,8 +14,7 @@ const SearchBar = () => {
     evt.preventDefault()
     const book = await getBookByTitle(evt.target.title.value)
     if (!book.success) {
-      setNotFound(true)
-      return console.log('NOT FOUND')
+      return setNotFound(true)
     }
     setBookInfo({ selected: true, book: book.data })
     return history.push(`/book/${book.data.id}`)
@@ -28,7 +27,7 @@ const SearchBar = () => {
 
     return (
       <div className='form-div'>
-        <h1 className='error-msg'>Libro no encontrado</h1>{/* Estilar este error */}
+        <h1 className='error-msg'>Libro no encontrado</h1>
       </div>
     )
   }
