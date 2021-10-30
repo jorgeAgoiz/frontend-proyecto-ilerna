@@ -1,3 +1,4 @@
+/* Div principal de la barra de busqueda */
 .form-div {
   grid-column: 1 / 9;
   grid-row: 2 / 3;
@@ -6,7 +7,11 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  gap: 0.4rem;
 }
+/* Div principal de la barra de busqueda */
+
+/* Etiqueta del Input */
 .form-div label {
   min-width: 24vw;
   font-size: 1.5rem;
@@ -15,7 +20,9 @@
   font-family: "Roboto Mono", monospace;
   padding: 0.4rem;
 }
+/* Etiqueta del Input */
 
+/* Input */
 #input-title {
   min-width: 28vw;
   height: 4.5vh;
@@ -24,3 +31,31 @@
   font-family: "Roboto Mono", monospace;
   padding: 0.4rem;
 }
+/* Input */
+
+/* Media Queries */
+@media (max-width: 980px) {
+  .form-div label {
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    letter-spacing: 1px;
+  }
+  #input-title {
+    height: 4.2vh;
+    font-size: 1rem;
+    padding: 0.2rem;
+  }
+}
+@media (max-width: 440px) {
+  .form-div label {
+    font-size: 1rem;
+    padding: 0.2rem;
+    letter-spacing: 1px;
+  }
+  #input-title {
+    height: 3.8vh;
+    font-size: 0.9rem;
+    padding: 0.2rem;
+  }
+}
+/* Media Queries */

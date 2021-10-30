@@ -17,6 +17,7 @@
   font-size: 2.6rem;
   letter-spacing: 4px;
   font-family: "Ephesis", cursive;
+  margin: 0.3rem;
 }
 
 .signup-form {
@@ -24,8 +25,7 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
-
-  width: 50%;
+  width: 60%;
   padding: 0.6rem;
 }
 .signup-form label {
@@ -40,6 +40,7 @@
   width: 60%;
   margin: 0.3rem;
   font-family: "Roboto Mono", monospace;
+  text-align: center;
 }
 
 #error {
@@ -53,4 +54,63 @@
   font-weight: bold;
   letter-spacing: 1px;
   color: rgb(16, 158, 58);
+}
+
+@media (max-width: 780px) {
+  .signup-main h1 {
+    font-size: 2.1rem;
+    letter-spacing: 3px;
+  }
+  .signup-form {
+    width: 70%;
+    padding: 0.4rem;
+  }
+  .signup-form label {
+    font-size: 0.9rem;
+  }
+  .signup-form input {
+    font-size: 0.9rem;
+    width: 65%;
+    margin: 0.2rem;
+  }
+
+  #error {
+    font-size: 0.9rem;
+  }
+  #success {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .signup-main {
+    grid-column: 1 / 6;
+    grid-row: 3 / 7;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .signup-main h1 {
+    font-size: 2rem;
+    letter-spacing: 3px;
+  }
+  .signup-form {
+    width: 80%;
+    padding: 0.4rem;
+  }
+  .signup-form label {
+    font-size: 0.7rem;
+  }
+  .signup-form input {
+    font-size: 0.7rem;
+    width: 65%;
+    margin: 0.2rem;
+  }
+
+  #error {
+    font-size: 0.7rem;
+  }
+  #success {
+    font-size: 0.7rem;
+  }
 }
