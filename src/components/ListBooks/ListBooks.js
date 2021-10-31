@@ -12,7 +12,7 @@ const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQ
           <td>{book.category.toUpperCase()}</td>
           <td>
             <Link to={`/book/${book.id}`}>
-              <img title='Detalles del libro' src='view-details.png' alt='details-icon' width='30px' height='30px' />
+              <img id='details-icon' title='Detalles del libro' src='view-details.png' alt='details-icon' />
             </Link>
           </td>
         </tr>
@@ -27,19 +27,19 @@ const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQ
         <thead>
           <tr className='book-card'>
             <th>
-              <img className='arrow-order' src='upArrow.png' alt='icon-arrow' width='30px' height='30px' onClick={() => changingQuery('title', 'ASC')} />
+              <img className='arrow-order' src='upArrow.png' alt='icon-arrow' onClick={() => changingQuery('title', 'ASC')} />
               <p>Título</p>
-              <img className='arrow-order' src='downArrow.png' alt='icon-arrow' width='30px' height='30px' onClick={() => changingQuery('title', 'DESC')} />
+              <img className='arrow-order' src='downArrow.png' alt='icon-arrow' onClick={() => changingQuery('title', 'DESC')} />
             </th>
             <th>
-              <img className='arrow-order' src='upArrow.png' alt='icon-arrow' width='30px' height='30px' onClick={() => changingQuery('author', 'ASC')} />
+              <img className='arrow-order' src='upArrow.png' alt='icon-arrow' onClick={() => changingQuery('author', 'ASC')} />
               <p>Autor</p>
-              <img className='arrow-order' src='downArrow.png' alt='icon-arrow' width='30px' height='30px' onClick={() => changingQuery('author', 'DESC')} />
+              <img className='arrow-order' src='downArrow.png' alt='icon-arrow' onClick={() => changingQuery('author', 'DESC')} />
             </th>
             <th>
-              <img className='arrow-order' src='upArrow.png' alt='icon-arrow' width='30px' height='30px' onClick={() => changingQuery('category', 'ASC')} />
+              <img className='arrow-order' src='upArrow.png' alt='icon-arrow' onClick={() => changingQuery('category', 'ASC')} />
               <p>Categoría</p>
-              <img className='arrow-order' src='downArrow.png' alt='icon-arrow' width='30px' height='30px' onClick={() => changingQuery('category', 'DESC')} />
+              <img className='arrow-order' src='downArrow.png' alt='icon-arrow' onClick={() => changingQuery('category', 'DESC')} />
             </th>
             <th>Detalles</th>
           </tr>
