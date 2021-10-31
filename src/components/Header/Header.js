@@ -45,7 +45,7 @@ const Header = () => {
   }
 
   return (
-    <div className='header'>
+    <div className={!userLog.logged ? 'header-no-logged' : 'header-logged'}>
       <div className='title-logo'>
         <h1>Community Readers</h1>
         <Link to='/'>
