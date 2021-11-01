@@ -136,11 +136,12 @@
 .book-reviews button {
   width: 80%;
   min-height: 5vh;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: "Roboto Mono", monospace;
   background-color: transparent;
   border: 3px solid black;
   border-radius: 12px;
+  padding: 0.1rem;
 }
 .book-reviews button:hover {
   cursor: pointer;
@@ -192,4 +193,213 @@
 }
 .book-delete button:hover {
   cursor: pointer;
+}
+
+@media (max-width: 780px) {
+  .book-title {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+  .book-author h2 {
+    font-size: 2rem;
+  }
+  .book-author p {
+    font-size: 1.6rem;
+  }
+  .book-category h2 {
+    font-size: 2rem;
+  }
+  .book-category p {
+    font-size: 1.6rem;
+  }
+  .book-rating h2 {
+    font-size: 2rem;
+  }
+  .book-rating p {
+    font-size: 1.6rem;
+  }
+  .book-created-at h2 {
+    font-size: 2rem;
+  }
+  .book-created-at p {
+    font-size: 1.6rem;
+  }
+  .book-description h2 {
+    font-size: 2rem;
+  }
+  .book-description #description-text {
+    font-size: 0.7rem;
+  }
+
+  .book-reviews button {
+    width: 85%;
+    font-size: 0.8rem;
+  }
+  .book-edit p {
+    font-size: 0.7rem;
+  }
+  .book-delete p {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 660px) {
+  .book-title {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  .book-author h2 {
+    font-size: 1.8rem;
+  }
+  .book-author p {
+    font-size: 1.4rem;
+  }
+  .book-category h2 {
+    font-size: 1.8rem;
+  }
+  .book-category p {
+    font-size: 1.4rem;
+  }
+  .book-rating h2 {
+    font-size: 1.8rem;
+  }
+  .book-rating p {
+    font-size: 1.4rem;
+  }
+  .book-created-at h2 {
+    font-size: 1.8rem;
+  }
+  .book-created-at p {
+    font-size: 1.4rem;
+  }
+  .book-description h2 {
+    font-size: 1.8rem;
+  }
+  .book-description #description-text {
+    font-size: 0.6rem;
+  }
+
+  .book-reviews button {
+    width: 85%;
+    font-size: 0.7rem;
+  }
+  .book-edit p {
+    font-size: 0.6rem;
+  }
+  .book-delete p {
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 500px) {
+  .book-title {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  .book-author h2 {
+    font-size: 1.4rem;
+  }
+  .book-author p {
+    font-size: 1.2rem;
+  }
+  .book-category h2 {
+    font-size: 1.4rem;
+  }
+  .book-category p {
+    font-size: 1.2rem;
+  }
+  .book-rating h2 {
+    font-size: 1.4rem;
+  }
+  .book-rating p {
+    font-size: 1.2rem;
+  }
+  .book-created-at h2 {
+    font-size: 1.4rem;
+  }
+  .book-created-at p {
+    font-size: 1.2rem;
+  }
+  .book-description {
+    grid-column: 1 / 6;
+    grid-row: 4 / 6;
+  }
+  .book-description h2 {
+    font-size: 1.4rem;
+  }
+  .book-description #description-text {
+    font-size: 0.6rem;
+  }
+
+  .book-reviews button {
+    width: 100%;
+    font-size: 0.7rem;
+  }
+  .book-edit {
+    grid-row: 6 / 7;
+    grid-column: 1 / 3;
+  }
+  .book-edit p {
+    font-size: 0.6rem;
+  }
+  .book-delete {
+    grid-row: 6 / 7;
+    grid-column: 4 / 6;
+  }
+  .book-delete p {
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 440px) {
+  .book-card-main {
+    grid-column: 1 / 6;
+    grid-row: 3 / 8;
+  }
+  .book-title {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
+  .book-author h2 {
+    font-size: 1.3rem;
+  }
+  .book-author p {
+    font-size: 1.1rem;
+  }
+  .book-category h2 {
+    font-size: 1.3rem;
+  }
+  .book-category p {
+    font-size: 1.1rem;
+  }
+  .book-rating h2 {
+    font-size: 1.3rem;
+  }
+  .book-rating p {
+    font-size: 1.1rem;
+  }
+  .book-created-at h2 {
+    font-size: 1.3rem;
+  }
+  .book-created-at p {
+    font-size: 1.1rem;
+  }
+  .book-description {
+    grid-column: 1 / 6;
+    grid-row: 4 / 6;
+  }
+  .book-description h2 {
+    font-size: 1.3rem;
+  }
+  .book-description #description-text {
+    font-size: 0.6rem;
+  }
+  .book-reviews button {
+    width: 100%;
+    font-size: 0.6rem;
+  }
+  .book-edit p {
+    font-size: 0.6rem;
+  }
+  .book-delete p {
+    font-size: 0.6rem;
+  }
 }
