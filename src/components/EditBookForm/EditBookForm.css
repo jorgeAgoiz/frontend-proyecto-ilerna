@@ -95,6 +95,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin: 0 auto;
   width: 100%;
   height: 90%;
   font-family: "Roboto Mono", monospace;
@@ -125,12 +126,10 @@
 @media (max-width: 980px) {
   #title-book input {
     width: 75%;
-    /*height: 3.4vh; */
     font-size: 1rem;
   }
   #autor-book input {
     width: 75%;
-    /* height: 3.4vh; */
     font-size: 1rem;
   }
 }
@@ -162,12 +161,112 @@
   }
   #category-book {
     width: 90%;
+    grid-row: 2 / 3;
+    grid-column: 2 / 5;
   }
   #category-book label {
-    font-size: 1.1rem;
+    font-size: 1rem;
     letter-spacing: 1px;
   }
   #category-book select {
     font-size: 0.8rem;
+  }
+}
+@media (max-width: 500px) {
+  .edit-book h1 {
+    font-size: 2.3rem;
+    letter-spacing: 3px;
+  }
+  #title-book label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  #title-book input {
+    width: 95%;
+    font-size: 0.7rem;
+    height: 3vh;
+  }
+  #autor-book label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  #autor-book input {
+    width: 95%;
+    font-size: 0.7rem;
+    height: 3vh;
+  }
+  #description-book {
+    grid-row: 3 / 6;
+    grid-column: 1 / 6;
+    width: 95%;
+    height: 100%;
+  }
+  #description-book label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  #description-book textarea {
+    font-size: 0.7rem;
+  }
+  #category-book {
+    width: 90%;
+  }
+  #category-book label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  #category-book select {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 440px) {
+  .edit-book {
+    grid-column: 1 / 6;
+    grid-row: 3 / 8;
+  }
+  .edit-book h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  #title-book label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  #title-book input {
+    width: 100%;
+    font-size: 0.7rem;
+    height: 3vh;
+  }
+  #autor-book label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  #autor-book input {
+    width: 100%;
+    font-size: 0.7rem;
+    height: 3vh;
+  }
+  #description-book {
+    grid-row: 3 / 6;
+    grid-column: 1 / 6;
+    width: 95%;
+    height: 100%;
+  }
+  #description-book label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  #description-book textarea {
+    font-size: 0.7rem;
+  }
+  #category-book {
+    width: 100%;
+  }
+  #category-book label {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  #category-book select {
+    font-size: 0.7rem;
   }
 }
