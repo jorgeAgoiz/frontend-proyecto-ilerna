@@ -43,6 +43,7 @@
   width: 65%;
   height: 3.4vh;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 #autor-book {
@@ -64,6 +65,7 @@
   width: 65%;
   height: 3.4vh;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 #category-book {
@@ -73,6 +75,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin: 0 auto;
   width: 100%;
   height: 90%;
   font-family: "Roboto Mono", monospace;
@@ -117,4 +120,54 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+}
+
+@media (max-width: 980px) {
+  #title-book input {
+    width: 75%;
+    /*height: 3.4vh; */
+    font-size: 1rem;
+  }
+  #autor-book input {
+    width: 75%;
+    /* height: 3.4vh; */
+    font-size: 1rem;
+  }
+}
+@media (max-width: 660px) {
+  #title-book label {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  #title-book input {
+    width: 95%;
+    font-size: 0.8rem;
+    height: 3vh;
+  }
+  #autor-book label {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  #autor-book input {
+    width: 95%;
+    font-size: 0.8rem;
+    height: 3vh;
+  }
+  #description-book label {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  #description-book textarea {
+    font-size: 0.8rem;
+  }
+  #category-book {
+    width: 90%;
+  }
+  #category-book label {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  #category-book select {
+    font-size: 0.8rem;
+  }
 }
