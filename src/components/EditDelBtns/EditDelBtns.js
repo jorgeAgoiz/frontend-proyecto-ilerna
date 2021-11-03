@@ -36,10 +36,10 @@ const EditDelBtns = ({ idReview, setReviews, reviews, setError }) => {
   return (
     <div id='review-btns'>
       <Link to={`/edit-review/${idReview}`}>
-        <img src='../editing.png' alt='edit-icon' width='25px' height='25px' />
+        <img id='review-btn-edit' src='../editing.png' alt='edit-icon' />
       </Link>
       <button onClick={onHandleDelete}>
-        <img src='../bin.png' alt='delete-icon' width='25px' height='25px' />
+        <img id='review-btn-delete' src='../bin.png' alt='delete-icon' />
       </button>
     </div>
   )

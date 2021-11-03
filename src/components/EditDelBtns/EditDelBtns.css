@@ -7,7 +7,43 @@
   gap: 0.4rem;
   flex-wrap: wrap;
 }
+#review-btn-edit,
+#review-btn-delete {
+  width: 25px;
+  height: 25px;
+}
 #review-btns button {
   border: none;
   cursor: pointer;
+}
+@media (max-width: 980px) {
+  #review-btns {
+    gap: 0.3rem;
+  }
+  #review-btn-edit,
+  #review-btn-delete {
+    width: 24px;
+    height: 24px;
+  }
+}
+@media (max-width: 660px) {
+  #review-btn-edit,
+  #review-btn-delete {
+    width: 23px;
+    height: 23px;
+  }
+}
+@media (max-width: 500px) {
+  #review-btn-edit,
+  #review-btn-delete {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media (max-width: 440px) {
+  #review-btn-edit,
+  #review-btn-delete {
+    width: 18px;
+    height: 18px;
+  }
 }

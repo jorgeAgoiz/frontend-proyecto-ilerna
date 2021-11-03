@@ -67,7 +67,7 @@ const ReviewsModal = ({ onClose }) => {
   return ReactDOM.createPortal(
     <div className='reviews-main'>
       <div id='reviews-close'>
-        <img onClick={onClose} src='../cancel.png' alt='exit-icon' width='30px' height='30px' />
+        <img onClick={onClose} src='../cancel.png' alt='exit-icon' />
       </div>
 
       {

@@ -49,7 +49,7 @@ const Header = () => {
       <div className='title-logo'>
         <h1>Community Readers</h1>
         <Link to='/'>
-          <img src='../icons8.png' alt='book-icon' />
+          <img src='../icons8.png' alt='book-icon' title='Inicio' />
         </Link>
       </div>
       {
