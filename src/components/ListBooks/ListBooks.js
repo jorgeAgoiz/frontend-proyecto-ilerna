@@ -50,10 +50,10 @@ const ListBooks = ({ page, numPages, allBooks, nextPage, previousPage, changingQ
       </table>
       <div className='num-pages'>
         <div className='previous-icon' onClick={previousPage} hidden={page <= 1}>
-          <img src='previous.png' alt='book-icon' height='38px' width='38px' />
+          <img src='previous.png' alt='book-icon' />
         </div>
         <div className='next-icon' onClick={nextPage} hidden={page >= numPages}>
-          <img src='next.png' alt='book-icon' height='38px' width='38px' />
+          <img src='next.png' alt='book-icon' />
         </div>
       </div>
       <div className='current-page'>

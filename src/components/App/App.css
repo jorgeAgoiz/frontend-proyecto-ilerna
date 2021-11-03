@@ -50,3 +50,10 @@ body {
   letter-spacing: 2px;
   color: rgb(202, 2, 2);
 }
+/* Media Querie */
+@media (max-width: 660px) {
+  .App {
+    height: 102vh;
+  }
+}
+/* Media Querie */

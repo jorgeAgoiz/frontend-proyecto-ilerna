@@ -1,3 +1,4 @@
+/* Div principal del componente  */
 .main-add-book {
   grid-column: 1 / 6;
   grid-row: 2 / 8;
@@ -14,6 +15,9 @@
   font-family: "Ephesis", cursive;
   letter-spacing: 4px;
 }
+/* Div principal del componente  */
+
+/* Div Formulario */
 .main-add-book .add-book-form {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -41,6 +45,7 @@
   width: 65%;
   height: 3.4vh;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 #author-div {
@@ -61,6 +66,7 @@
   width: 65%;
   height: 3.4vh;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 #category-div {
@@ -141,7 +147,9 @@
   justify-content: center;
   align-items: center;
 }
+/* Div Formulario */
 
+/* Media Queries */
 @media (max-width: 980px) {
   .main-add-book h1 {
     font-size: 2.5rem;
@@ -216,3 +224,4 @@
     grid-row: 3 / 8;
   }
 }
+/* Media Queries */

@@ -24,3 +24,33 @@
   font-size: 0.7rem;
   font-family: "Roboto Mono", monospace;
 }
+
+@media (max-width: 980px) {
+  .myactivity-main .review-main .list-of-reviews #a-review h3 {
+    font-size: 0.9rem;
+  }
+  .myactivity-main .review-main .list-of-reviews #a-review p {
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 660px) {
+  .myactivity-main .review-main .list-of-reviews #a-review h3 {
+    font-size: 0.8rem;
+  }
+  .myactivity-main .review-main .list-of-reviews #a-review p {
+    font-size: 0.5rem;
+  }
+}
+@media (max-width: 500px) {
+  .myactivity-main .review-main .list-of-reviews #a-review h3 {
+    font-size: 0.7rem;
+  }
+  .myactivity-main .review-main .list-of-reviews #a-review p {
+    font-size: 0.4rem;
+  }
+}
+@media (max-width: 40px) {
+  .myactivity-main .review-main .list-of-reviews #a-review h3 {
+    font-size: 0.6rem;
+  }
+}
