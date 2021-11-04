@@ -11,3 +11,6 @@ export const BooksContextProvider = ({ children }) => {
     </BooksContext.Provider>
   )
 }
+
+/* Contexto global donde compartiremos con todo el arbol de componentes, los libros disponibles en
+la comunidad. */

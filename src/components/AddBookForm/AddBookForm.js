@@ -1,10 +1,15 @@
+// Dependencias
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+// Contextos
 import { AuthContext } from '../../context/AuthContext'
 import { BooksContext } from '../../context/BooksContext'
+// Funciones de llamada a la api
 import { createNewBook } from '../../services/apiCalls'
+// Componentes
 import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
+// Estilos
 import './AddBookForm.css'
 
 const AddBookForm = () => {

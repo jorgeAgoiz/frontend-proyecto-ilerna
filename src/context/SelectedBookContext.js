@@ -14,3 +14,6 @@ export const SelectedBookContextProvider = ({ children }) => {
     </SelectedBookContext.Provider>
   )
 }
+
+/* Contexto global donde compartiremos con todo el arbol de componentes, el libro que hayamos seleccionado
+para visualizar, modificar o al que añadir una reseña. */

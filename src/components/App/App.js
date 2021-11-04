@@ -1,18 +1,22 @@
-import Header from '../Header/Header'
+// Dependencias
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { useContext } from 'react'
+// Estilo
 import './App.css'
+// Contextos
+import { SelectedBookContextProvider } from '../../context/SelectedBookContext'
+import { AuthContext } from '../../context/AuthContext'
+import { BooksContextProvider } from '../../context/BooksContext'
+// Componentes
+import Header from '../Header/Header'
 import MainCover from '../MainCover/MainCover'
 import Signup from '../Signup/Signup'
 import Signin from '../Signin/Signin'
-import { AuthContext } from '../../context/AuthContext'
-import { useContext } from 'react'
 import SearchList from '../SearchList/SearchList'
-import { BooksContextProvider } from '../../context/BooksContext'
 import BookCard from '../BookCard/BookCard'
 import EditReviewForm from '../EditReviewForm/EditReviewForm'
 import EditBookForm from '../EditBookForm/EditBookForm'
 import AddBookForm from '../AddBookForm/AddBookForm'
-import { SelectedBookContextProvider } from '../../context/SelectedBookContext'
 import MyActivity from '../MyActivity/MyActivity'
 
 const App = () => {
@@ -42,5 +46,3 @@ const App = () => {
 }
 
 export default App
-
-/* Dependiendo del estado del loggeo podemos establecer un grid u otro */

@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import { getAllReviews } from '../services/apiCalls'
 import { SelectedBookContext } from '../context/SelectedBookContext'
 
+// Custom hook para extraer lógica del componente
 const useValorations = () => {
   const [valReviews, setValReviews] = useState([])
   const { bookInfo, setBookInfo } = useContext(SelectedBookContext)

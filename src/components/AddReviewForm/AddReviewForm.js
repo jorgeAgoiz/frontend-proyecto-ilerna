@@ -1,10 +1,16 @@
+// Dependencias
 import React, { useContext, useState } from 'react'
+// Contexto
+import { AuthContext } from '../../context/AuthContext'
+// Estilos
 import './AddReviewForm.css'
+// Componentes
 import InputConfirm from '../InputConfirm/InputConfirm'
 import CancelBtn from '../CancelBtn/CancelBtn'
-import { AuthContext } from '../../context/AuthContext'
+// Funciones helpers y de llamada a la API
 import { addReview, updateBook } from '../../services/apiCalls'
 import { calculateAverage } from '../../utils/calculateAverage'
+// Custom hooks
 import useValorations from '../../hooks/useValorations'
 
 const AddReviewForm = ({ onClickCancel, onClose }) => {

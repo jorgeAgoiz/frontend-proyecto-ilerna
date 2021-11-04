@@ -1,4 +1,5 @@
 /** ********** LLAMADAS DE AUTH ************/
+// Crear usuario
 export const createUser = (user) => {
   return fetch('http://localhost:3012/signup', {
     method: 'POST',
@@ -9,7 +10,7 @@ export const createUser = (user) => {
     .then(result => result)
     .catch(err => err)
 }
-
+// Autenticar usuario
 export const signinUser = (user) => {
   return fetch('http://localhost:3012/signin', {
     method: 'POST',
@@ -26,7 +27,7 @@ export const signinUser = (user) => {
     })
     .catch(err => err)
 }
-
+// Eliminar usuario
 export const deleteUser = (data) => {
   return fetch('http://localhost:3012/delete_account', {
     method: 'DELETE',
@@ -40,6 +41,7 @@ export const deleteUser = (data) => {
 /** ********** LLAMADAS DE AUTH ************/
 
 /** ********** LLAMADAS DE LIBROS ************/
+// Obtener todos los libros con paginación
 export const getAllBooks = (page, order, direction) => {
   return fetch(`http://localhost:3012/books?page=${page}&order=${order}&direction=${direction}`, {
     method: 'GET',
@@ -49,7 +51,7 @@ export const getAllBooks = (page, order, direction) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Obtener un libro específico
 export const getSpecificBook = (id) => {
   return fetch(`http://localhost:3012/book/${id}`, {
     method: 'GET',
@@ -59,7 +61,7 @@ export const getSpecificBook = (id) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Eliminar libro
 export const deleteBook = (id) => {
   const data = {
     id
@@ -73,7 +75,7 @@ export const deleteBook = (id) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Actualizar libro
 export const updateBook = (data) => {
   return fetch('http://localhost:3012/books', {
     method: 'PATCH',
@@ -84,7 +86,7 @@ export const updateBook = (data) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Añadir libro
 export const createNewBook = (data) => {
   return fetch('http://localhost:3012/books', {
     method: 'POST',
@@ -95,7 +97,7 @@ export const createNewBook = (data) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Obtener libro por titulo
 export const getBookByTitle = (title) => {
   return fetch(`http://localhost:3012/book-title/${title}`, {
     method: 'GET',
@@ -105,7 +107,7 @@ export const getBookByTitle = (title) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Obtener libros de usuario
 export const getBooksOfUser = (userId) => {
   return fetch(`http://localhost:3012/books/${userId}`, {
     method: 'GET',
@@ -117,7 +119,8 @@ export const getBooksOfUser = (userId) => {
 }
 /** ********** LLAMADAS DE LIBROS ************/
 
-/** ********** LLAMADAS DE rESEÑAS ************/
+/** ********** LLAMADAS DE RESEÑAS ************/
+// Obtener todas las reseñas de un libro
 export const getAllReviews = (idBook) => {
   return fetch(`http://localhost:3012/book_reviews/${idBook}`, {
     method: 'GET',
@@ -127,7 +130,7 @@ export const getAllReviews = (idBook) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Eliminar reseña
 export const deleteReview = (idReview) => {
   const data = {
     id: idReview
@@ -142,7 +145,7 @@ export const deleteReview = (idReview) => {
     .then(response => response)
     .catch(err => err)
 }
-
+// Obtener una reseña específica
 export const getSpecificReview = (idReview) => {
   return fetch(`http://localhost:3012/review/${idReview}`, {
     method: 'GET',
@@ -152,7 +155,7 @@ export const getSpecificReview = (idReview) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Actualizar reseña
 export const updateReview = (id, valoration, textReview, idUser) => {
   const data = {
     id,
@@ -169,7 +172,7 @@ export const updateReview = (id, valoration, textReview, idUser) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Añadir reseña
 export const addReview = (data) => {
   return fetch('http://localhost:3012/review', {
     method: 'POST',
@@ -180,7 +183,7 @@ export const addReview = (data) => {
     .then(data => data)
     .catch(err => err)
 }
-
+// Obtener reseñas de un usuario
 export const getReviewsOfUser = (userId) => {
   return fetch(`http://localhost:3012/user_reviews/${userId}`, {
     method: 'GET',

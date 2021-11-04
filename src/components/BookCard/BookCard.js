@@ -1,9 +1,15 @@
+// Dependencias
 import React, { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
+// Estilos
 import './BookCard.css'
+// Componente
 import ReviewsModal from '../ReviewsModal/ReviewsModal'
+// Contexto
 import { AuthContext } from '../../context/AuthContext'
+// Custom hoook
 import useBookData from '../../hooks/useBookData'
+// Funcion de llamada a la API
 import { deleteBook } from '../../services/apiCalls'
 
 const BookCard = () => {

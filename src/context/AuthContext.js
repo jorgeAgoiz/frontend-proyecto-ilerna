@@ -18,3 +18,5 @@ export const AuthContextProvider = ({ children }) => {
     </AuthContext.Provider>
   )
 }
+/* Contexto global donde compartiremos con todo el arbol de componentes, si el usuario esta loggeado
+y en caso de ser así, los datos de dicho usuario. */

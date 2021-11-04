@@ -1,3 +1,4 @@
+/* Boton */
 .cancel-generic-btn {
   font-size: 1.1rem;
   font-weight: bold;
@@ -19,7 +20,9 @@
 .cancel-generic-btn:active {
   background-color: rgb(247, 68, 45);
 }
+/* Boton */
 
+/* Media Queries */
 @media (max-width: 660px) {
   .cancel-generic-btn {
     font-size: 1rem;
@@ -35,3 +38,4 @@
     font-size: 0.8rem;
   }
 }
+/* Media Queries */

@@ -4,6 +4,7 @@ import { BooksContext } from '../context/BooksContext'
 import { SelectedBookContext } from '../context/SelectedBookContext'
 import { getAllBooks } from '../services/apiCalls'
 
+// Custom hook para extraer lógica del componente
 const useBookData = (bookId) => {
   const { books, setBooks } = useContext(BooksContext)
   const { bookInfo, setBookInfo } = useContext(SelectedBookContext)

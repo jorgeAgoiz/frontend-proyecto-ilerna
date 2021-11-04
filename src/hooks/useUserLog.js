@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
+// Custom hook para extraer lógica del componente
 const useUserLog = () => {
   const { userLog, setUserLog } = useContext(AuthContext)
 

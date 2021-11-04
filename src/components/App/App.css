@@ -1,14 +1,16 @@
+/* Fuentes importadas */
 @import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ephesis&family=Roboto+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
 
+/* Estilos globales */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
 }
-
+/* Estilos body */
 body {
   background-image: linear-gradient(
       to top,
@@ -23,6 +25,7 @@ body {
   font-size: 75%;
 }
 
+/* Estilo componente general App */
 .App {
   height: 97vh;
   width: 100%;
@@ -35,6 +38,7 @@ body {
   color: white;
 }
 
+/* Estilos mensajes de error */
 .error-msg {
   font-family: "Roboto Mono", monospace;
   font-size: 1.6rem;
@@ -42,7 +46,6 @@ body {
   letter-spacing: 2px;
   color: rgb(202, 2, 2);
 }
-
 .error-msg-p {
   font-family: "Roboto Mono", monospace;
   font-size: 1.2rem;
@@ -50,6 +53,7 @@ body {
   letter-spacing: 2px;
   color: rgb(202, 2, 2);
 }
+
 /* Media Querie */
 @media (max-width: 660px) {
   .App {

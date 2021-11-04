@@ -1,9 +1,14 @@
+// Dependencias
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
+// Custom hook
 import useBookData from '../../hooks/useBookData'
+// Función de llamada a API
 import { updateBook } from '../../services/apiCalls'
+// Componentes
 import CancelBtn from '../CancelBtn/CancelBtn'
 import InputConfirm from '../InputConfirm/InputConfirm'
+// Estilos
 import './EditBookForm.css'
 
 const EditBookForm = () => {

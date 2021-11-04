@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { SelectedBookContext } from '../context/SelectedBookContext'
 import { getSpecificBook, getSpecificReview } from '../services/apiCalls'
 
+// Custom hook para extraer lógica del componente
 const useReviewData = (reviewId) => {
   const [rev, setRev] = useState(null)
   const [error, setError] = useState(null)

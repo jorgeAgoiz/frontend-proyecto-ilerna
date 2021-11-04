@@ -1,3 +1,4 @@
+/* Div principal del componente */
 .add-review-form {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,9 @@
   height: 100%;
   padding: 0.2rem;
 }
+/* Div principal del componente */
+
+/* Div del formulario */
 #form-add {
   display: flex;
   flex-direction: column;
@@ -54,3 +58,4 @@
   align-items: center;
   width: 100%;
 }
+/* Div del formulario */
