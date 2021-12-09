@@ -1,7 +1,8 @@
+const API_URL = 'https://backend-ilerna-project.herokuapp.com/'
 /** ********** LLAMADAS DE AUTH ************/
 // Crear usuario
 export const createUser = (user) => {
-  return fetch('http://localhost:3012/signup', {
+  return fetch(`${API_URL}signup`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user)
@@ -12,7 +13,7 @@ export const createUser = (user) => {
 }
 // Autenticar usuario
 export const signinUser = (user) => {
-  return fetch('http://localhost:3012/signin', {
+  return fetch(`${API_URL}signin`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user)
@@ -29,7 +30,7 @@ export const signinUser = (user) => {
 }
 // Eliminar usuario
 export const deleteUser = (data) => {
-  return fetch('http://localhost:3012/delete_account', {
+  return fetch(`${API_URL}delete_account`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -43,7 +44,7 @@ export const deleteUser = (data) => {
 /** ********** LLAMADAS DE LIBROS ************/
 // Obtener todos los libros con paginación
 export const getAllBooks = (page, order, direction) => {
-  return fetch(`http://localhost:3012/books?page=${page}&order=${order}&direction=${direction}`, {
+  return fetch(`${API_URL}books?page=${page}&order=${order}&direction=${direction}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -53,7 +54,7 @@ export const getAllBooks = (page, order, direction) => {
 }
 // Obtener un libro específico
 export const getSpecificBook = (id) => {
-  return fetch(`http://localhost:3012/book/${id}`, {
+  return fetch(`${API_URL}book/${id}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -66,7 +67,7 @@ export const deleteBook = (id) => {
   const data = {
     id
   }
-  return fetch('http://localhost:3012/books', {
+  return fetch(`${API_URL}books`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -77,7 +78,7 @@ export const deleteBook = (id) => {
 }
 // Actualizar libro
 export const updateBook = (data) => {
-  return fetch('http://localhost:3012/books', {
+  return fetch(`${API_URL}books`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -88,7 +89,7 @@ export const updateBook = (data) => {
 }
 // Añadir libro
 export const createNewBook = (data) => {
-  return fetch('http://localhost:3012/books', {
+  return fetch(`${API_URL}books`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -99,7 +100,7 @@ export const createNewBook = (data) => {
 }
 // Obtener libro por titulo
 export const getBookByTitle = (title) => {
-  return fetch(`http://localhost:3012/book-title/${title}`, {
+  return fetch(`${API_URL}book-title/${title}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -109,7 +110,7 @@ export const getBookByTitle = (title) => {
 }
 // Obtener libros de usuario
 export const getBooksOfUser = (userId) => {
-  return fetch(`http://localhost:3012/books/${userId}`, {
+  return fetch(`${API_URL}books/${userId}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -122,7 +123,7 @@ export const getBooksOfUser = (userId) => {
 /** ********** LLAMADAS DE RESEÑAS ************/
 // Obtener todas las reseñas de un libro
 export const getAllReviews = (idBook) => {
-  return fetch(`http://localhost:3012/book_reviews/${idBook}`, {
+  return fetch(`${API_URL}book_reviews/${idBook}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -136,7 +137,7 @@ export const deleteReview = (idReview) => {
     id: idReview
   }
 
-  return fetch('http://localhost:3012/review', {
+  return fetch(`${API_URL}review`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -147,7 +148,7 @@ export const deleteReview = (idReview) => {
 }
 // Obtener una reseña específica
 export const getSpecificReview = (idReview) => {
-  return fetch(`http://localhost:3012/review/${idReview}`, {
+  return fetch(`${API_URL}review/${idReview}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -163,7 +164,7 @@ export const updateReview = (id, valoration, textReview, idUser) => {
     text_review: textReview,
     id_user: idUser
   }
-  return fetch('http://localhost:3012/review', {
+  return fetch(`${API_URL}review`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -174,7 +175,7 @@ export const updateReview = (id, valoration, textReview, idUser) => {
 }
 // Añadir reseña
 export const addReview = (data) => {
-  return fetch('http://localhost:3012/review', {
+  return fetch(`${API_URL}review`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -185,7 +186,7 @@ export const addReview = (data) => {
 }
 // Obtener reseñas de un usuario
 export const getReviewsOfUser = (userId) => {
-  return fetch(`http://localhost:3012/user_reviews/${userId}`, {
+  return fetch(`${API_URL}user_reviews/${userId}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
