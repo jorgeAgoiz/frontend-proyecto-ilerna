@@ -1,4 +1,7 @@
-const API_URL = 'https://backend-ilerna-project.herokuapp.com/'
+/* URL de la API en desarrollo */
+const API_URL = 'http://localhost:3012/'
+/* const API_URL_PRODUCTION = 'https://backend-ilerna-project.herokuapp.com/' */
+
 /** ********** LLAMADAS DE AUTH ************/
 // Crear usuario
 export const createUser = (user) => {
